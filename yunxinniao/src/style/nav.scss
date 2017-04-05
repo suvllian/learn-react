@@ -1,0 +1,42 @@
+.header {
+	position: fixed;
+	width: 100%;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+
+	.container {
+		padding: 12px 32px;
+		transition: 0.5s all ease;
+	}
+}
+
+.active-nav {
+	background-color: rgba(0,0,0,0.8);
+
+	.container {
+		transform: translateY(-6px);
+	}
+}
+
+.nav-item {
+	list-style: none;
+	float: left;
+	padding-right: 60px;
+
+	a {
+		color: #909090;
+		font-size: 24px;
+	}
+
+	.active-link{
+		color: #0036ff;
+	}
+}
+
+.logo {
+	float: right;
+	font-size: 24px;
+	color: #0036ff;
+}
+

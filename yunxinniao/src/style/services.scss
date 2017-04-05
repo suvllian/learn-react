@@ -1,0 +1,23 @@
+.service-info {
+	background-color: #000;
+	color: #fff;
+
+	h1 {
+		margin-bottom: 18px;
+		font-weight: 500;
+	}
+
+	ul {
+		width: 100%;
+	}
+
+	.col-md-4 {
+		list-style: none;
+
+		p{
+			line-height: 2;
+			white-space: pre;
+		}
+	}
+}
+

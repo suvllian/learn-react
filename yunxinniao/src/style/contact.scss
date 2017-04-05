@@ -1,0 +1,19 @@
+.contact {
+	color: #000;
+}
+
+.contact-info {
+	margin-bottom:48px;
+
+	&:before {
+		content: "";
+		display: block;
+		width: 42px;
+		height: 3px;
+		background-color: #000;
+		position: relative;
+		top: 0;
+		left: 0;
+		margin-bottom: 6px;
+	}
+}

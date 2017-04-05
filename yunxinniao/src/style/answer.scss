@@ -1,0 +1,39 @@
+.answer {
+	background-color: #000;
+	color: #fff;
+
+	a { 
+		color: #fff;
+	}
+
+	h4 {
+		font-weight: 400;
+		margin-bottom: 16px;
+	}
+}
+
+.panel-body {
+	overflow: hidden;
+	transition: 0.6s all ease;
+
+	.col-md-11{
+		padding: 0 5% 0 8.33%;		
+	}
+}
+
+.panel {
+	&::after {
+		content: "";
+		display: block;
+		width: 91.66%;
+		height: 1px;
+		background-color: #fff;
+		position: relative;
+		top: 0;
+		left: 8.33%;
+	}
+}
+
+.panel-head {
+	cursor: pointer;
+}

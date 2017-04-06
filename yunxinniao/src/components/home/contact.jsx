@@ -22,7 +22,7 @@ export default class Contact extends Component{
 					</div>
 
 					<div className="col-md-9">
-						<img className="position" src="http://127.0.0.1/position.jpg" />
+						<img className="position" src="./src/assets/position.jpg" />
 					</div>
 				</div>
 			</div>

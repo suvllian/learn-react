@@ -4,9 +4,11 @@
 	top: 0;
 	left: 0;
 	z-index: 1000;
+	transition: 0.5s all ease;
+	min-width: 1170px;
 
 	.container {
-		padding: 12px 32px;
+		padding: 16px 32px 12px;
 		transition: 0.5s all ease;
 	}
 }
@@ -15,7 +17,7 @@
 	background-color: rgba(0,0,0,0.8);
 
 	.container {
-		transform: translateY(-6px);
+		transform: translateY(-8px);
 	}
 }
 
@@ -37,6 +39,10 @@
 .logo {
 	float: right;
 	font-size: 24px;
-	color: #0036ff;
+	font-weight: 600;
+
+	a {
+		color: #0036ff;
+	}
 }
 

@@ -24,6 +24,9 @@ export default class AnswerItem extends Component{
 								<p className="panel-head" onClick={ this.showAnswer.bind(this) }>
 									特别是打造品牌项目有什么兴奋？他们弯曲不同的肌肉吗?
 								</p>
+								<div className="add-icon">
+
+								</div>
 							</div>
 						</div>	
 					</h4>

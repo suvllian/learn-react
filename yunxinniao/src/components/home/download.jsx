@@ -15,35 +15,55 @@ export default class Download extends Component{
 
 					<div className="row">
 						<div className="col-md-6">
-							<div>
-								<img src="http://127.0.0.1/download-1.png" />
-							</div>
+							<a href="#">
+								<div className="image-block">
+									<img src="./src/assets/download-1.png" />
+									<div className="hover-title">
+										<h4>点击下载</h4>
+									</div>
+								</div>
+							</a>
 							<p>
 								LOGO and Vision
 							</p>
 						</div>
 						<div className="col-md-6">
-							<div>
-								<img src="http://127.0.0.1/download-2.jpg" />
-							</div>
+							<a href="#">
+								<div className="image-block">
+									<img src="./src/assets/download-2.jpg" />
+									<div className="hover-title">
+										<h4>点击下载</h4>
+									</div>
+								</div>
+							</a>
 							<p>
 								Our Team
 							</p>
 						</div>
 
 						<div className="col-md-6">
-							<div>
-								<img src="http://127.0.0.1/download-3.jpg" />
-							</div>
+							<a href="#">
+								<div className="image-block">
+									<img src="./src/assets/download-3.jpg" />
+									<div className="hover-title">
+										<h4>点击下载</h4>
+									</div>
+								</div>
+							</a>
 							<p>
 								Our Office
 							</p>
 						</div>
 
 						<div className="col-md-6">
-							<div>
-								<img src="http://127.0.0.1/download-4.jpg" />
-							</div>
+							<a href="#">
+								<div className="image-block">
+									<img src="./src/assets/download-4.jpg" />
+									<div className="hover-title">
+										<h4>点击下载</h4>
+									</div>
+								</div>
+							</a>
 							<p>
 								Customer List
 							</p>

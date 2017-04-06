@@ -8,7 +8,13 @@
 
 	h4 {
 		font-weight: 400;
-		margin-bottom: 16px;
+		padding: 10px 0;
+
+		&:hover {
+			.add-icon {
+				transform: rotate(180deg)
+			}
+		}
 	}
 }
 
@@ -17,7 +23,8 @@
 	transition: 0.6s all ease;
 
 	.col-md-11{
-		padding: 0 5% 0 8.33%;		
+		padding: 0 5% 0 8.33%;	
+		position: relative;	
 	}
 }
 
@@ -36,4 +43,26 @@
 
 .panel-head {
 	cursor: pointer;
+}
+
+.add-icon {
+	background-color: #fff;
+	height: 1px;
+	width: 32px;
+	position: absolute;
+	right: 0;
+	top: 50%;
+	z-index: 10;
+	transition: 0.5s all ease;
+
+	&::before {
+		content: "";
+		display: block;
+		width: 1px;
+		height: 32px;
+		background-color: #fff;
+		position: absolute;
+		top: -16px;
+		left: 15.5px;
+	}
 }

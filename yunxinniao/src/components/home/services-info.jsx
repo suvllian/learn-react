@@ -1,13 +1,11 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router';
-import './../../style/services.scss';
 
 export default class ServiceInfo extends Component{
 	render() {
 		return (
 			<div className="service-info">
 				<div className="container">
-					<h1>Services</h1>
+					<h1 className="section-title">Services</h1>
 					<ul>
 						<li className="col-md-4">
 							<p>咨询   Consultancy</p>

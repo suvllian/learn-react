@@ -7,6 +7,7 @@ import Contact from './contact.jsx';
 import Answer from './answer.jsx';
 import Download from './download.jsx';
 import ServiceInfo from './services-info.jsx';
+import Waterfall from './waterfall.jsx';
 
 export default class Home extends Component{
 	render() {
@@ -16,6 +17,7 @@ export default class Home extends Component{
 				<AboutTop />
 				<Contact />
 				<ServiceInfo />
+				<Waterfall />
 				<Answer />
 				<Download />
 				<AboutBottom />

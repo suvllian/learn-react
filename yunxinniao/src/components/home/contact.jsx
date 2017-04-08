@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router';
-import './../../style/contact.scss';
 
 export default class Contact extends Component{
 	render() {

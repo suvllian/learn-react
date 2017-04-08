@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router';
-import './../../style/nav.scss';
 
 export default class Slider extends Component{
 	constructor(props) {
@@ -42,7 +40,7 @@ export default class Slider extends Component{
 	    }
 	}
 
-	componentDidMount() {
+	setNav() {
 		let header = document.querySelector(".header");
 
 		window.addEventListener("scroll", function(){
@@ -63,5 +61,11 @@ export default class Slider extends Component{
 				header.className = "header";
 			}
 		}
+	}
+
+
+
+	componentDidMount() {
+		this.setNav();
 	}
 }

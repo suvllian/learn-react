@@ -1,0 +1,355 @@
+/* 导航 */
+.header {
+	position: fixed;
+	width: 100%;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+	transition: 0.5s all ease;
+	min-width: 1170px;
+
+	.container {
+		padding: 16px 32px 12px;
+		transition: 0.5s all ease;
+	}
+}
+
+.active-nav {
+	background-color: rgba(0,0,0,0.8);
+
+	.container {
+		transform: translateY(-8px);
+	}
+}
+
+.nav-item {
+	list-style: none;
+	float: left;
+	padding-right: 60px;
+
+	a {
+		color: #909090;
+		display: block;
+		height: 100%;
+		font-size: 24px;
+	}
+
+	.active-link{
+		color: #0036ff;
+	}
+}
+
+.logo {
+	float: right;
+	font-size: 24px;
+	font-weight: 600;
+
+	a {
+		color: #0036ff;
+	}
+}
+
+/* 首屏 */
+.slider {
+	height: 700px;
+	position: relative;
+
+	&::after {
+	    clear: both;
+	    content: "";
+	    display: block;
+	    height: 0;
+	    line-height: 0;
+	    visibility: hidden;
+	}
+
+	.slider-item {
+		width: 100%;
+		height: 700px;
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-size: cover;
+		background-position: center center;
+		float: left; 
+		margin-right: -100%;
+		position: relative;
+		transition: 0.6s all ease;
+		z-index: 1;
+		opacity: 0;
+	}
+
+	.slider-active {
+		z-index: 2;
+		opacity: 1;
+		display: block;
+	}
+}
+
+
+/* 关于 */
+.about-top {
+	background-color: #0036ff;
+	position: relative;
+	color: #fff;
+
+	p {
+		white-space: nowrap;  
+	}
+
+	.section-title {
+		margin-bottom: 4px;
+	}
+
+	&:after {
+		clear: both;
+	}
+}
+
+.about-bottom {
+	background-color: #000;
+	color: #fff;
+	position: relative;
+
+	.section-title::after{
+		content: "";
+		display: block;
+		width: 96%;
+		height: 1px;
+		background-color: #fff;
+		position: relative;
+		top: 12px;
+		left: 0;
+		margin-bottom: 6px;
+	}
+
+	p {
+		color: #fff;
+		white-space: nowrap;  
+	}
+}
+
+.copyright {
+	margin-top: 36px;
+}
+
+
+/* 联系我们 */
+.contact {
+	color: #000;
+}
+
+.contact-info {
+	margin-bottom:48px;
+
+	&:before {
+		content: "";
+		display: block;
+		width: 42px;
+		height: 3px;
+		background-color: #000;
+		position: relative;
+		top: 0;
+		left: 0;
+		margin-bottom: 6px;
+	}
+}
+
+
+/* 服务信息 */
+.service-info {
+	background-color: #000;
+	color: #fff;
+
+	ul {
+		width: 100%;
+	}
+
+	.col-md-4 {
+		list-style: none;
+
+		p{
+			line-height: 2;
+			white-space: pre;
+		}
+	}
+}
+
+
+/* 下载 */
+.download {
+	background-color: #fefafa;
+	color: #000;
+
+	.download-header {
+		margin-bottom: 12px;
+
+		p {
+			font-weight: 500;
+			font-size: 16px;
+			white-space: nowrap;  
+		}
+
+		&::after {
+			clear: both;
+			content: " ";
+		    display: table;
+		}
+	}
+
+	.col-md-6 {
+		padding: 10px 6px;
+
+		p {
+			padding: 12px 0;
+		}
+	}
+}
+
+.image-block {
+	position: relative;
+}
+
+.hover-title {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background-color: rgba(0,0,0,0.66);
+	top:0;
+	left: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #fff;
+	opacity: 0;
+	transition: all 0.5s ease 0s;
+
+	h4 {
+		font-size: 26px;
+		font-weight: 500;
+		letter-spacing: 2px;
+		transition: all 0.5s ease 0s;
+		transform: translate3d(0px, 50px, 0px);
+		opacity: 0;
+	}
+
+	&:hover {
+		h4 {
+			transform: translate3d(0px, -50%, 0px);
+			opacity: 1;
+			top: 50%;
+		}
+	    opacity: 1;
+	}
+}
+
+/* 瀑布流 */
+.waterfall {
+	background-color: #000;
+	color: #fff;
+	position: relative;
+}
+
+.box-contain {
+    position: relative;
+	column-count: 3;
+	// column-width: 24em;
+	column-gap: 20px;
+
+    &::after {
+	    clear: both;
+	    content: "";
+	    display: block;
+	    height: 0;
+	    line-height: 0;
+	}
+}
+
+.pin{
+    -moz-page-break-inside: avoid;
+	-webkit-column-break-inside: avoid;
+	break-inside: avoid;
+
+    &:hover{
+	     .box img{
+		    filter: brightness(100%);
+		}
+	}
+}
+
+.box{
+    padding: 20px 0;
+}
+
+.box img{
+    width:100%;
+    height:auto;
+    filter: brightness(66%);
+    transition: 0.5s all ease;
+}
+
+/* 回答 */
+.answer {
+	background-color: #000;
+	color: #fff;
+
+	.panel-head {
+		font-weight: 400;
+		padding: 10px 0;
+
+		&:hover {
+			.add-icon {
+				transform: rotate(180deg)
+			}
+		}
+	}
+}
+
+.panel-body {
+	overflow: hidden;
+	height: 0;
+	transition: 0.6s all ease;
+
+	.col-md-11-2 {
+		padding: 0 0 0 4.16%;
+		position: relative;	
+	}
+}
+
+.panel {
+	&::after {
+		content: "";
+		display: block;
+		width: 95.8%;
+		height: 1px;
+		background-color: #fff;
+		position: relative;
+		top: 0;
+		left: 4.16%;
+	}
+}
+
+.panel-info {
+	cursor: pointer;
+}
+
+.add-icon {
+	background-color: #fff;
+	height: 1px;
+	width: 30px;
+	position: absolute;
+	right: 0;
+	top: 50%;
+	z-index: 10;
+	transition: 0.5s all ease;
+
+	&::before {
+		content: "";
+		display: block;
+		width: 1px;
+		height: 32px;
+		background-color: #fff;
+		position: absolute;
+		top: -16px;
+		left: 14.5px;
+	}
+}

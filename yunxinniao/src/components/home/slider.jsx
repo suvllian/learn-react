@@ -6,14 +6,6 @@ import Background3 from './../../assets/slider-3.jpg';
 import Background4 from './../../assets/slider-4.jpg';
 import Background5 from './../../assets/slider-5.jpg';
 
-const bg = [
-	{ backgroundImage: `url(${Background1})` },
-	{ backgroundImage: `url(${Background2})` },
-	{ backgroundImage: `url(${Background3})` },
-	{ backgroundImage: `url(${Background4})` },
-	{ backgroundImage: `url(${Background5})` }
-]
-
 export default class Slider extends Component{
 	constructor(props) {
 		super(props);
@@ -27,41 +19,25 @@ export default class Slider extends Component{
 	render() {
 		return (
 			<div className="slider">
-				<ul>
-					<li style={bg[0]} className="slider-item slider-active">
-						
+				<ul className="slider-items">
+					<li className="slider-item slider-active">
+						<img src={ Background1 } />
 					</li>
-
-					<li style={bg[1]} className="slider-item">
-						
+					<li className="slider-item">
+						<img src={ Background2 } />
 					</li>
-
-					<li style={bg[2]} className="slider-item">
-						
+					<li className="slider-item">
+						<img src={ Background3 } />
 					</li>
-
-					<li style={bg[3]} className="slider-item">
-						
+					<li className="slider-item">
+						<img src={ Background4 } />
 					</li>
-
-					<li style={bg[4]} className="slider-item">
-						
-					</li>
+					<li className="slider-item">
+						<img src={ Background5 } />
+					</li>			
 				</ul>
 			</div>
 		)
-	}
-
-	
-	prevImage() {
-		let now = this.state.currentItem;
-		let prev = 0;
-		if (now == 1) {
-			prev = this.state.liLength;
-		} else {
-			prev = now - 1;
-		}
-		return prev;
 	}
 
 	nextImage() {

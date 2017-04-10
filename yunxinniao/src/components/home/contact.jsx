@@ -20,7 +20,7 @@ export default class Contact extends Component{
 					</div>
 
 					<div className="col-md-9">
-						<img className="position" src="./src/assets/position.jpg" />
+						<img className="position" src={ require("./../../assets/position.jpg") } />
 					</div>
 				</div>
 			</div>

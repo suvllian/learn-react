@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import AnswerItem from './../block/answer-item.jsx';
+import AnswerItem from './../item/answer-item.jsx';
 
 const infor = [
 	{ title: "如何持续产出具有创意作品？", text: "HuangGe：我擅长创造具有情感化表达的功能性作品。我总是试着用有趣的方式尝试这个过程。我希望看到我的作品的人可以体验或感觉到某种东西，无论是让他们思考、给他们带来快乐、或给他们带来灵感。我一直致力于创造实现客户目标的功能性工作。" },
@@ -11,14 +11,12 @@ const infor = [
 
 export default class Answer extends Component{
 	constructor(props) {
-		super(props);
-
-		
+		super(props);		
 	}
 
 	render() {
 		return (
-			<div className="answer">
+			<div className="answer" id="answer">
 				<div className="container">
 					<h1 className="section-title">Answers</h1>
 					{

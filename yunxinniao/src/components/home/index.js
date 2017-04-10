@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router';
+
+import Nav from './nav.jsx';
 import Slider from './slider.jsx';
 import AboutTop from './about-top.jsx';
 import AboutBottom from './about-bottom.jsx';
@@ -13,6 +14,7 @@ export default class Home extends Component{
 	render() {
 		return (
 			<div>
+				<Nav />
 				<Slider />
 				<AboutTop />
 				<Contact />
@@ -20,7 +22,7 @@ export default class Home extends Component{
 				<Waterfall />
 				<Answer />
 				<Download />
-				<AboutBottom />
+				<AboutBottom />	
 			</div>
 		)
 	}

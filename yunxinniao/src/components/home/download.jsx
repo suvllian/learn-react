@@ -1,9 +1,17 @@
 import React, {Component} from 'react';
+import DownLoadItem from './../item/download-item.jsx';
+
+const infor = [
+	{ title: "LOGO and Vision" },
+	{ title: "Our Team" },
+	{ title: "Our Office" },
+	{ title: "Customer List" },
+]
 
 export default class Download extends Component{
 	render() {
 		return (
-			<div className="download">
+			<div className="download" id="download">
 				<div className="container">
 					<header className="download-header">
 						<h1 className="section-title">Download</h1>
@@ -14,60 +22,11 @@ export default class Download extends Component{
 					</header>
 
 					<div className="row">
-						<div className="col-md-6">
-							<a href="#">
-								<div className="image-block">
-									<img src="./src/assets/download-1.png" />
-									<div className="hover-title">
-										<h4>点击下载</h4>
-									</div>
-								</div>
-							</a>
-							<p>
-								LOGO and Vision
-							</p>
-						</div>
-						<div className="col-md-6">
-							<a href="#">
-								<div className="image-block">
-									<img src="./src/assets/download-2.jpg" />
-									<div className="hover-title">
-										<h4>点击下载</h4>
-									</div>
-								</div>
-							</a>
-							<p>
-								Our Team
-							</p>
-						</div>
-
-						<div className="col-md-6">
-							<a href="#">
-								<div className="image-block">
-									<img src="./src/assets/download-3.jpg" />
-									<div className="hover-title">
-										<h4>点击下载</h4>
-									</div>
-								</div>
-							</a>
-							<p>
-								Our Office
-							</p>
-						</div>
-
-						<div className="col-md-6">
-							<a href="#">
-								<div className="image-block">
-									<img src="./src/assets/download-4.jpg" />
-									<div className="hover-title">
-										<h4>点击下载</h4>
-									</div>
-								</div>
-							</a>
-							<p>
-								Customer List
-							</p>
-						</div>
+						{
+							infor.map((item, index) => 
+								<DownLoadItem key={index}  title={item.title} value={index} />
+							)
+						}
 					</div>
 				</div>
 			</div>

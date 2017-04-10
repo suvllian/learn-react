@@ -24,7 +24,7 @@ export default class ServiceInfo extends Component{
 						</li>
 
 						<li className="col-md-4">
-							<p>字营销   Digital Marketing </p>
+							<p>数字营销   Digital Marketing </p>
 							<p>网站   Website </p>
 							<p>交互设计   Interactive</p>
 							<p>社交媒体运营   Social Media Strategy</p>

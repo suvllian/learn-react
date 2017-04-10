@@ -54,28 +54,23 @@
 	height: 700px;
 	position: relative;
 
-	&::after {
-	    clear: both;
-	    content: "";
-	    display: block;
-	    height: 0;
-	    line-height: 0;
-	    visibility: hidden;
+	.slider-items {
+		position: relative;
 	}
 
 	.slider-item {
 		width: 100%;
 		height: 700px;
-		background-repeat: no-repeat;
-		background-attachment: fixed;
-		background-size: cover;
-		background-position: center center;
-		float: left; 
+		float: left;
 		margin-right: -100%;
-		position: relative;
 		transition: 0.6s all ease;
 		z-index: 1;
 		opacity: 0;
+
+		img {
+			width: 100%;
+			height: 100%;
+		}
 	}
 
 	.slider-active {
@@ -136,6 +131,8 @@
 /* 联系我们 */
 .contact {
 	color: #000;
+	background-color: #fff;
+	position: relative;
 }
 
 .contact-info {
@@ -159,6 +156,7 @@
 .service-info {
 	background-color: #000;
 	color: #fff;
+	position: relative;
 
 	ul {
 		width: 100%;
@@ -179,6 +177,7 @@
 .download {
 	background-color: #fefafa;
 	color: #000;
+	position: relative;
 
 	.download-header {
 		margin-bottom: 12px;
@@ -207,6 +206,10 @@
 
 .image-block {
 	position: relative;
+
+	img {
+		width: 100%;
+	}
 }
 
 .hover-title {
@@ -251,9 +254,8 @@
 
 .box-contain {
     position: relative;
-	column-count: 3;
-	// column-width: 24em;
-	column-gap: 20px;
+	column-count: 2;
+	column-gap: 10px;
 
     &::after {
 	    clear: both;
@@ -271,30 +273,34 @@
 
     &:hover{
 	     .box img{
-		    filter: brightness(100%);
+		    filter: brightness(100%) grayscale(0%);
 		}
 	}
 }
 
 .box{
-    padding: 20px 0;
+    padding: 5px 0;
+    overflow: hidden;
 }
 
 .box img{
     width:100%;
     height:auto;
-    filter: brightness(66%);
+    filter: brightness(88%) grayscale(100%);
     transition: 0.5s all ease;
+    cursor: pointer;
 }
 
 /* 回答 */
 .answer {
 	background-color: #000;
 	color: #fff;
+	position: relative;
 
 	.panel-head {
 		font-weight: 400;
-		padding: 10px 0;
+		padding: 20px 0;
+		cursor: pointer;
 
 		&:hover {
 			.add-icon {
@@ -306,12 +312,10 @@
 
 .panel-body {
 	overflow: hidden;
-	height: 0;
 	transition: 0.6s all ease;
 
 	.col-md-11-2 {
-		padding: 0 0 0 4.16%;
-		position: relative;	
+		padding: 2px 0 12px 4.16%;
 	}
 }
 
@@ -328,14 +332,10 @@
 	}
 }
 
-.panel-info {
-	cursor: pointer;
-}
-
 .add-icon {
 	background-color: #fff;
 	height: 1px;
-	width: 30px;
+	width: 32px;
 	position: absolute;
 	right: 0;
 	top: 50%;
@@ -349,7 +349,76 @@
 		height: 32px;
 		background-color: #fff;
 		position: absolute;
-		top: -16px;
-		left: 14.5px;
+		top: -15.5px;
+		left: 15.5px;
+	}
+}
+
+/* 弹出层 */
+#mask{
+	position:fixed;
+	width:100%;
+	height:100%;
+	top:0;
+	left:0;
+	z-index:1000;
+	overflow: auto;
+	background-color: rgba(0,0,0,0.8);
+
+	.slide-action-butn{
+	    height: 108px;
+	    margin-top: -54px;
+	    position: absolute;
+	    top: 50%;
+	    transition: 0.5s all ease;
+	    width: 72px;
+	    z-index: 2;
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+
+	    .fa{
+	    	color: #fff;
+	    }
+	}
+
+	.slide-action-left{
+		left: 0;
+
+		.slide-action-butn{
+			left: 0;
+		}
+	}
+
+	.slide-action-right{
+		right: 0;
+
+		.slide-action-butn{
+			right: 0;
+		}
+	}
+}
+
+.mask-contain{
+	width:100%;
+	height:100%;
+	position:relative;
+	display :flex;
+	justify-content: center;
+	align-items: center;
+}
+.mask-image{
+	width: 0;
+	height: 0;
+	border-radius: 6px;
+	z-index: 3000;
+	text-align: center;
+	transition: .5s all ease-out;
+
+	img{
+		display: block;
+		border-radius: 6px;
+		width: 100%;
+		height: 100%;
 	}
 }

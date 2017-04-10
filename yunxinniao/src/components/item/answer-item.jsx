@@ -29,7 +29,7 @@ export default class AnswerItem extends Component{
 						</div>
 					</div>		
 				</div>
-				<div className="panel-body" style={{height: this.state.show ? '7em' : '0px'}}>
+				<div className="panel-body" style={{height: this.state.show ? 'auto' : '0px'}}>
 					<div className="row">
 						<div className="col-md-11-2">
 							<p>
@@ -48,6 +48,6 @@ export default class AnswerItem extends Component{
 	}
 
 	componentDidMount() {
-		
+		let item = document.querySelector(".panel-body .col-md-11-2");
 	}
 }

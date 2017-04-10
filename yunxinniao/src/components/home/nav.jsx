@@ -1,4 +1,13 @@
 import React, {Component} from 'react';
+import effect from './../../utils/scroll.js';
+import LiItem from './../item/li-item.jsx';
+
+const lis = [
+	{ isActive: true, href: "#about", title: "About"},
+	{ isActive: false, href: "#work", title: "Work"},
+	{ isActive: false, href: "#answer", title: "Answers"},
+	{ isActive: false, href: "#download", title: "Download"},	
+]
 
 export default class Slider extends Component{
 	constructor(props) {
@@ -11,10 +20,11 @@ export default class Slider extends Component{
 				<div className="container">
 					<nav className="nav">
 						<ul>
-							<li className="nav-item"><a href="#" className="active-link">About</a></li>
-							<li className="nav-item"><a href="#">Work</a></li>
-							<li className="nav-item"><a href="#">Answers</a></li>
-							<li className="nav-item"><a href="#">Download</a></li>
+							{
+								lis.map((item, index) => 
+									<LiItem key={index} isActive={item.isActive} href={item.href} title={item.title}  />
+								)
+							}
 						</ul>
 					</nav>
 					<div className="logo">
@@ -62,8 +72,6 @@ export default class Slider extends Component{
 			}
 		}
 	}
-
-
 
 	componentDidMount() {
 		this.setNav();

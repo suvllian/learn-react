@@ -1,12 +1,9 @@
 import React from 'react';
 import { render } from 'react-dom';
-
-import router from './routes.js';
-// import './style/common.scss';
-// import './style/index.scss';
+import App from './components/home/index.js';
 
 require('./style/common.scss');
 require('./style/index.scss');
 require('./style/reset.scss');
 
-render(router, document.getElementById('app'));
+render(<App/>, document.getElementById('app'));

@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 export default class AboutTop extends Component{
 	render() {
 		return (
-			<div className="about-top">
+			<div className="about-top" id="about">
 				<div className="container">
 					<div className="col-md-3">
 						<p className="section-title">About</p>

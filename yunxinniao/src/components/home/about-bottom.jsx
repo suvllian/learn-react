@@ -9,9 +9,9 @@ export default class AboutBottom extends Component{
 						<div className="col-md-6">
 							<h1 className="section-title">About</h1>
 							<div className="col-md-4">	
-								<p>yunxinniao&lingmei是一家位于西安市的全方位服务设计公司，</p>
-								<p>为客户和我们自己创建品牌、广告、网站、应用程序、</p>
-								<p>宣传片、书籍、海报和包装。</p>
+								<p>Slogan：打动人心 促进生意</p>
+								<p>Service：云信鸟是一家位于西安市的全方位服务设计公司，</p>
+								<p>为客户和我们自己创建品牌、广告、网站、书籍、海报和包装等。</p>
 							</div>
 						</div>
 						<div className="col-md-6">

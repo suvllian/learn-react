@@ -3,41 +3,30 @@ import React, {Component} from 'react';
 export default class LiItem extends Component{
 	constructor(props) {
 		super(props);
-
-		this.state = {
-			isActive: this.props.isActive
-		} 	
-
-		this.renderLiItem = this.renderLiItem.bind(this);
-		this.mouseEnter = this.mouseEnter.bind(this);
-		this.mouseLeave = this.mouseLeave.bind(this);
-	}
-
-	renderLiItem() {
-		const { href, title } = this.props;
-
-		const itemStyle = {
-			color: this.state.isActive ? '#0036ff' : '#909090'
-		}
-
-		return (
-			<a style={itemStyle} href={href}> { title } </a>
-		)
 	}
 
 	render() {
+		let selectdStyle = {
+			color: '#0036ff'
+		}
 		return (
-			<li className="nav-item" onMouseEnter={ this.mouseEnter } onMouseLeave={ this.mouseLeave } >
-				{this.renderLiItem()}
-			</li>
+			<ul>
+			{
+				(function(){
+					return this.props.list.map((item, index) => {
+						let itemStyle = (item.href == this.props.currentItem) ? selectdStyle : {};
+						return (<li key={index} className="nav-item" onMouseEnter={this.changeActiveItem.bind(this,item.href)}  
+								onMouseLeave={this.changeActiveItem.bind(this, "#about")}>
+							<a style={itemStyle} href={item.href}> { item.title } </a>
+						</li>)
+					})
+				}.bind(this))()
+			}	
+			</ul>
 		)
 	}
 
-	mouseEnter() {
-		this.setState({ isActive: true });
-	}	
-
-	mouseLeave() {
-		this.setState({ isActive: false });
-	}	
+	changeActiveItem(item) {
+		this.props.changeItem(item);
+	}
 }

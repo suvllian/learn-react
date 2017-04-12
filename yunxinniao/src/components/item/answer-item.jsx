@@ -29,12 +29,12 @@ export default class AnswerItem extends Component{
 						</div>
 					</div>		
 				</div>
-				<div className="panel-body" style={{height: this.state.show ? 'auto' : '0px'}}>
+				<div className="panel-body" style={{height: this.state.show ? (this.props.line * 36 + 'px') : '0px'}}>
 					<div className="row">
 						<div className="col-md-11-2">
-							<p>
-								{ this.props.text }
-							</p>
+							
+								<p dangerouslySetInnerHTML={{__html: this.props.text}}/>
+							
 						</div>
 					</div>	
 				</div>
@@ -45,9 +45,5 @@ export default class AnswerItem extends Component{
 	showAnswer(){
 		let isShow = !this.state.show;
 		this.setState({ show: isShow });
-	}
-
-	componentDidMount() {
-		let item = document.querySelector(".panel-body .col-md-11-2");
 	}
 }

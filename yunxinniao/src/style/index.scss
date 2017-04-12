@@ -291,6 +291,14 @@
     cursor: pointer;
 }
 
+.more {
+	text-align: center;
+	font-size: 28px;
+	font-weight: 400;
+	cursor: pointer;
+	padding: 18px;
+}
+
 /* 回答 */
 .answer {
 	background-color: #000;
@@ -312,7 +320,7 @@
 
 .panel-body {
 	overflow: hidden;
-	transition: 0.6s all ease;
+	transition: 0.5s all ease-out;
 
 	.col-md-11-2 {
 		padding: 2px 0 12px 4.16%;

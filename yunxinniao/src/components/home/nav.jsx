@@ -2,16 +2,27 @@ import React, {Component} from 'react';
 import effect from './../../utils/scroll.js';
 import LiItem from './../item/li-item.jsx';
 
-const lis = [
-	{ isActive: true, href: "#about", title: "About"},
-	{ isActive: false, href: "#work", title: "Work"},
-	{ isActive: false, href: "#answer", title: "Answers"},
-	{ isActive: false, href: "#download", title: "Download"},	
-]
-
 export default class Slider extends Component{
 	constructor(props) {
 		super(props);
+
+		this.state = {
+			list: [
+				{ href: "#about", title: "About"},
+				{ href: "#work", title: "Work"},
+				{ href: "#answer", title: "Answers"},
+				{ href: "#download", title: "Download"}
+			],
+			currentItem: "#about"
+		}
+
+		this.changeItem = this.changeItem.bind(this);
+	}
+
+	changeItem(item) {
+		this.setState({
+			currentItem: item
+		})
 	}
 
 	render() {
@@ -19,13 +30,7 @@ export default class Slider extends Component{
 			<header className="header">
 				<div className="container">
 					<nav className="nav">
-						<ul>
-							{
-								lis.map((item, index) => 
-									<LiItem key={index} isActive={item.isActive} href={item.href} title={item.title}  />
-								)
-							}
-						</ul>
+						<LiItem changeItem={this.changeItem} list={this.state.list} currentItem={this.state.currentItem} />
 					</nav>
 					<div className="logo">
 						<a href="http://yunxinniao.com"><span>YUNXINNIAO&LINGMEI</span></a>

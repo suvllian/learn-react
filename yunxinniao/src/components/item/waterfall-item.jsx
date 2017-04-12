@@ -12,9 +12,9 @@ export default class WaterfallItem extends Component{
 
 	render() {
 		return (
-			<div className="pin" onClick={ this.createBMask.bind(this, this.props.index) }>
+			<div className="pin" onClick={ this.createBMask.bind(this, this.props.id) }>
 				<div className="box">
-					<img src={ require("./../../assets/work-" + this.props.index + ".jpg") } />
+					<img src={ require("./../../assets/work-" + this.props.id + ".jpg") } />
 				</div>
 			</div>
 		)

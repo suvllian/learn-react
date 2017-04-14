@@ -7,7 +7,7 @@ export default class DownloadItem extends Component{
 		this.infor = this.props;
 	}
 
-	handleClick(e) {
+	downFile(e) {
 		e.preventDefault();
 		let filename = "";
 		if ( this.infor.value == 3) {
@@ -22,7 +22,7 @@ export default class DownloadItem extends Component{
 	render() {
 		return (
 			<div className="col-md-6">
-				<a href="#" onClick={this.handleClick.bind(this)}>
+				<a href="#" onClick={this.downFile.bind(this)}>
 					<div className="image-block">
 						<img src={ require("./../../assets/download-" + (this.infor.value+1) + ".jpg") } />
 						<div className="hover-title">

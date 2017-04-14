@@ -26,16 +26,4 @@ export default class Contact extends Component{
 			</div>
 		)
 	}
-
-	setHeight(){
-		let slider = document.querySelector(".contact .col-md-3");
-		let positionImg = document.querySelector(".position");
-
-		let height = slider.offsetHeight;
-		positionImg.style.height = height + 'px';
-	}
-
-	componentDidMount() {
-		// this.setHeight();
-	}
 }

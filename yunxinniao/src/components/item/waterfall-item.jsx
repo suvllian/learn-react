@@ -23,7 +23,7 @@ export default class WaterfallItem extends Component{
 	createBMask(index) {
 		let html = '<div class="mask-contain">\
 						<div class="mask-image" id="mask-image">\
-							<img src="./static/img/work-'+ index + '.jpg">\
+							<img src="./static/img/work-'+ index + "-" + this.state.now + '.jpg">\
 						</div>\
 						<div class="slide-action">\
 							<div class="slide-action-left">\
@@ -70,10 +70,6 @@ export default class WaterfallItem extends Component{
 
 	changeMaskSrc(nowIndex) {
 		this.setState({ now: nowIndex });
-		this.img.src = './static/img/work-'+ nowIndex + '.jpg';
-	}
-
-	componentDidMount() {
-		
+		this.img.src = './static/img/work-'+ this.props.id + "-" + nowIndex + '.jpg';
 	}
 }

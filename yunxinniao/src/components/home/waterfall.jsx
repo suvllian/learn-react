@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import WaterfallItem from './../item/waterfall-item.jsx';
 import axios from 'axios';
 
+const url = "./static/api/index.php";
+
 export default class Waterfall extends Component{
 	constructor(props) {
 		super(props);
@@ -12,7 +14,8 @@ export default class Waterfall extends Component{
 			isMore: true
 		}
 
-		// this.getMoreImage = this.getMoreImage.bind(this);
+		this.getMoreImage = this.getMoreImage.bind(this);
+		this.downFile = this.downFile.bind(this);
 	}
 
 
@@ -42,9 +45,15 @@ export default class Waterfall extends Component{
 			)
 		} else {
 			return (
-				<h2 className="more">没有更多内容了...</h2>
+				<h2 className="more"><a href="#download" onClick={ this.downFile }>下载Customer List获取更多案例</a></h2>
 			)
 		}
+	}
+
+	downFile(e) {
+		e.preventDefault();
+		let url = "http://yunxinniao.com/static/file/filedown.php?filename=our-works.zip";
+		window.open(url);
 	}
 
 	getMoreImage() {
@@ -61,8 +70,8 @@ export default class Waterfall extends Component{
 	}
 
 	getImageList(page) {
-		let url = "http://yunxinniao.com/api/index.php?do=getImage&page=" + page;
-		return axios.get(url);
+		let urlWithParams = url + "?concrete=getImage&page=" + page;
+		return axios.get(urlWithParams);
 	}
 
 
@@ -85,7 +94,7 @@ export default class Waterfall extends Component{
 		return array;
 	}
 
-	componentWillMount() {
+	componentDidMount() {
 		this.getImageList(1).then(response => {
 			this.setState({ imageLists: response.data});
 		}).catch(error => {

@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import effect from './../../utils/scroll.js';
 import LiItem from './../item/li-item.jsx';
 
 export default class Slider extends Component{

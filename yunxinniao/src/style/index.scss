@@ -293,10 +293,14 @@
 
 .more {
 	text-align: center;
-	font-size: 28px;
-	font-weight: 400;
+	font-weight: 500;
+	font-size: 26px;
 	cursor: pointer;
 	padding: 18px;
+
+	a {
+		color: #fff;
+	}
 }
 
 /* 回答 */

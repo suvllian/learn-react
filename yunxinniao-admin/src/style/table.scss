@@ -1,0 +1,72 @@
+/*
+ * 表格样式
+ *
+ */
+
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    width: 100%; 
+    margin:16px auto;
+
+    // 设置隔行背景色
+    tr{
+        border-bottom: 1px solid #eee;
+        
+        &:nth-child(2n){
+            background-color:#fff;
+        }
+
+        &:nth-child(2n+1){
+            background-color:#eee;
+        }
+    }
+
+    td{
+        padding: 6px;
+        max-width: 300px;
+        min-width: 82px;
+        max-height: 100px;
+        position:relative;
+        text-align: center;
+
+        img{
+            max-height:50px;
+            max-width: 180px; 
+        }
+    }
+
+    th{
+        padding: 12px;
+        background-color:#fff;
+        border-bottom: 1px solid #ccc;
+        text-align: center;
+    }
+
+    input, textarea{
+        width: 100%;
+        padding:12px;
+        border:1px solid #ccc;
+        border-radius:3px;
+    }
+
+    input[type=radio]{
+        width: 5px;
+    }
+
+    textarea{
+        height: 120px;
+    } 
+
+    table {
+        margin: 0;
+        border: 0;
+    }
+}
+
+// 上传文件
+label[for=uploadBtn]{
+    cursor: pointer;
+}

@@ -9,7 +9,16 @@ export default class Change extends Component{
 		this.state = {
 			isChange: false,
 			uploadSuccess: true,
-			index: 0
+			index: 0,
+			id: 0,
+			imageSrc: [
+				"http://gw.alicdn.com/tfs/TB1_NDSPVXXXXcUXVXXXXXXXXXX-900-500.jpg",
+				"http://gw.alicdn.com/tfs/TB1_NDSPVXXXXcUXVXXXXXXXXXX-900-500.jpg",
+				"http://gw.alicdn.com/tfs/TB1_NDSPVXXXXcUXVXXXXXXXXXX-900-500.jpg",
+				"http://gw.alicdn.com/tfs/TB1_NDSPVXXXXcUXVXXXXXXXXXX-900-500.jpg",
+				"http://gw.alicdn.com/tfs/TB1_NDSPVXXXXcUXVXXXXXXXXXX-900-500.jpg",
+				"http://gw.alicdn.com/tfs/TB1_NDSPVXXXXcUXVXXXXXXXXXX-900-500.jpg"
+			]
 		}
 	}
 
@@ -23,8 +32,8 @@ export default class Change extends Component{
 				</h1>
 				<header className="image-header">
 					<label htmlFor="uploadBtn">
-						<img src="http://gw.alicdn.com/tfs/TB1_NDSPVXXXXcUXVXXXXXXXXXX-900-500.jpg" 
-							onClick={ this.addImage.bind(this, -1)}/>
+						<img src={this.state.imageSrc[0]} 
+							onClick={ this.addImage.bind(this, -1)}/>				
 					</label>
 				</header>
 				<div className="image-block">
@@ -32,7 +41,7 @@ export default class Change extends Component{
 						[1, 2, 3, 4, 5].map((item, index) => 
 							<div key={index} onClick={ this.addImage.bind(this, index)} >
 								<label htmlFor="uploadBtn">
-									<img src="http://gw.alicdn.com/tfs/TB1_NDSPVXXXXcUXVXXXXXXXXXX-900-500.jpg" />
+									<img src={this.state.imageSrc[item]}  />
 								</label>
 							</div>
 						)
@@ -84,9 +93,9 @@ export default class Change extends Component{
 		let fileName = "";
 
 		if(index == 0) {
-			fileName = "work-" + this.id;
+			fileName = "work-" + this.state.id;
 		} else {
-			fileName = "work-" + this.id + "-" + index;
+			fileName = "work-" + this.state.id + "-" + index;
 		}
 
 		let fileData = new FormData();
@@ -98,6 +107,18 @@ export default class Change extends Component{
 			if (res.data == 1){
 				this.setState({ isChange: false});
 				this.setState({ uploadSuccess: true});
+
+				setTimeout(() => {
+					if(index == 0) {
+						let imageSrc = this.state.imageSrc;
+						imageSrc[this.state.index] = "/static/img/work-" + this.state.id + ".jpg";
+						this.setState({ imageSrc: imageSrc });
+					} else {
+						let imageSrc = this.state.imageSrc;
+						imageSrc[this.state.index] = "/static/img/work-" + this.state.id + "-" + this.state.index + ".jpg";
+						this.setState({ imageSrc: imageSrc });
+					}
+				}, 1000);
 			} else{
 				this.setState({ uploadSuccess: false});
 			}   
@@ -112,9 +133,9 @@ export default class Change extends Component{
 
 		let url = "";
 		if(index == -1) {
-			url = "/static/img/work-" + this.id + ".jpg";
+			url = "/static/img/work-" + this.state.id + ".jpg";
 		} else {
-			url = "/static/img/work-" + this.id + "-" + (index+1) + ".jpg";
+			url = "/static/img/work-" + this.state.id + "-" + (index+1) + ".jpg";
 		}
 		setTimeout(() => {
 			this.refs.img.src = url;
@@ -134,7 +155,7 @@ export default class Change extends Component{
 
 	componentDidMount() {
 		api.getNumber().then(res => {
-			this.id = parseInt(res.data);
+			this.setState({ id: parseInt(res.data)});
 		})
 	}
 }

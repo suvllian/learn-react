@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router';
+import { hashHistory, Link } from 'react-router';
 import api from './../../api/';
 
 export default class Change extends Component{
@@ -7,10 +7,17 @@ export default class Change extends Component{
 		super(props);
 
 		this.state = {
+			// 选中图片进行更换
 			isChange: false,
+
+			// 更换成功
 			uploadSuccess: true,
+
+			// 选中的图片的索引
 			index: 0
 		}
+
+		// 当前图片的ID
 		this.id = this.props.params.id;
 	}
 
@@ -26,6 +33,9 @@ export default class Change extends Component{
 					<label htmlFor="uploadBtn">
 						<img src={ require("./../../assets/work-" + this.id + ".jpg") }  
 							onClick={ this.addImage.bind(this, -1)}/>
+						<div className="user-btn">
+							<span className="blue-Btn margin">点击替换大图</span>	
+						</div>	
 					</label>
 				</header>
 				<div className="image-block">
@@ -34,6 +44,9 @@ export default class Change extends Component{
 							<div key={index} onClick={ this.addImage.bind(this, index)} >
 								<label htmlFor="uploadBtn">
 									<img src={require("./../../assets/work-" + this.id + "-" + item + ".jpg")} />
+									<div className="user-btn">
+										<span className="blue-Btn margin">替换第{item}张</span>	
+									</div>
 								</label>
 							</div>
 						)
@@ -45,6 +58,7 @@ export default class Change extends Component{
 		)
 	}
 
+	// 预览图片的DOM节点
 	renderPreViewImg() {
 		if (this.state.isChange) {
 			return (
@@ -55,6 +69,7 @@ export default class Change extends Component{
 		}
 	}
 
+	// 选中图片后出现的两个按钮
 	renderChange() {
 		if (this.state.isChange) {
 			return (
@@ -66,6 +81,7 @@ export default class Change extends Component{
 		}
 	}
 
+	// 上传失败提示
 	renderSuccess() {
 		if (!this.state.uploadSuccess) {
 			return (
@@ -74,11 +90,13 @@ export default class Change extends Component{
 		}
 	}
 
+	// 更改state
 	changeState() {
 		this.setState({ isChange: false });
 		this.setState({ uploadSuccess: true});
 	}
 
+	// 上传图片
 	upload() {
 		let file = this.refs.file.files[0];
 		let index = this.state.index;
@@ -97,11 +115,15 @@ export default class Change extends Component{
 
 		api.uploadImage(fileData, fileName).then(res => {
 			if (res.data == 1){
-				this.setState({ isChange: false});
-				this.setState({ uploadSuccess: true});
+				this.changeState();
+
+				// 上传成功后，刷新当前页面。重新加载图片
+				setTimeout(()=> {
+					location.reload();
+				}, 500);
 			} else{
 				this.setState({ uploadSuccess: false});
-			}   
+			}  
 		}).catch(err => {
 		    
 		});
@@ -122,6 +144,7 @@ export default class Change extends Component{
 		}, 0);
 	}
 
+	// 预览图片
 	preViewImg(){
 		let file = this.refs.file.files[0];
 		let imageDom = this.refs.img;
@@ -131,9 +154,5 @@ export default class Change extends Component{
 	    fileReader.onload = (oFREvent) => {
 	        imageDom.src = oFREvent.target.result;
 	    };
-	}
-
-	componentDidMount() {
-		
 	}
 }

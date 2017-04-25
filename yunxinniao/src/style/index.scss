@@ -54,13 +54,10 @@
 	height: 700px;
 	position: relative;
 
-	.slider-items {
-		position: relative;
-	}
-
 	.slider-item {
 		width: 100%;
 		height: 700px;
+		position: relative;
 		float: left;
 		margin-right: -100%;
 		transition: 0.6s all ease;
@@ -425,12 +422,16 @@
 	border-radius: 6px;
 	z-index: 3000;
 	text-align: center;
-	transition: .5s all ease-out;
+	transition: 0.5s all ease-out;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 
 	img{
 		display: block;
 		border-radius: 6px;
-		width: 100%;
+		width: auto;
+		max-width: 100%;
 		height: 100%;
 	}
 }

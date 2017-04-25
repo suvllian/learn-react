@@ -33,7 +33,10 @@ export default class Change extends Component{
 				<header className="image-header">
 					<label htmlFor="uploadBtn">
 						<img src={this.state.imageSrc[0]} 
-							onClick={ this.addImage.bind(this, -1)}/>				
+							onClick={ this.addImage.bind(this, -1)}/>	
+						<div className="user-btn">
+							<span className="blue-Btn margin">点击上传大图</span>	
+						</div>		
 					</label>
 				</header>
 				<div className="image-block">
@@ -42,6 +45,9 @@ export default class Change extends Component{
 							<div key={index} onClick={ this.addImage.bind(this, index)} >
 								<label htmlFor="uploadBtn">
 									<img src={this.state.imageSrc[item]}  />
+									<div className="user-btn">
+										<span className="blue-Btn margin">上传第{item}张</span>	
+									</div>
 								</label>
 							</div>
 						)
@@ -53,6 +59,7 @@ export default class Change extends Component{
 		)
 	}
 
+	// 图片预览DOM节点
 	renderPreViewImg() {
 		if (this.state.isChange) {
 			return (
@@ -63,6 +70,7 @@ export default class Change extends Component{
 		}
 	}
 
+	// 更换图片时出现的按钮
 	renderChange() {
 		if (this.state.isChange) {
 			return (
@@ -74,6 +82,7 @@ export default class Change extends Component{
 		}
 	}
 
+	// 更换失败提醒
 	renderSuccess() {
 		if (!this.state.uploadSuccess) {
 			return (
@@ -82,11 +91,13 @@ export default class Change extends Component{
 		}
 	}
 
+	// 更改state
 	changeState() {
 		this.setState({ isChange: false });
 		this.setState({ uploadSuccess: true});
 	}
 
+	// 上传图片
 	upload() {
 		let file = this.refs.file.files[0];
 		let index = this.state.index;
@@ -118,7 +129,7 @@ export default class Change extends Component{
 						imageSrc[this.state.index] = "/static/img/work-" + this.state.id + "-" + this.state.index + ".jpg";
 						this.setState({ imageSrc: imageSrc });
 					}
-				}, 1000);
+				}, 666);
 			} else{
 				this.setState({ uploadSuccess: false});
 			}   
@@ -142,6 +153,7 @@ export default class Change extends Component{
 		}, 0);
 	}
 
+	// 预览图片
 	preViewImg(){
 		let file = this.refs.file.files[0];
 		let imageDom = this.refs.img;

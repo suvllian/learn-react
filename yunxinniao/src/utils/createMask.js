@@ -13,8 +13,8 @@ const createMask = (inner) => {
 	// 判断是长屏还是宽屏，即电脑屏幕和手机屏幕的区别
 	if (screenInfo.scale > 1) {
 		// 宽屏
-		height = "72%";
-		width  = "72%";
+		height = "80%";
+		width  = "80%";
 	} else {
 		// 长屏
 		height = screenInfo.width * 2 / 4 + 'px';
@@ -27,12 +27,7 @@ const createMask = (inner) => {
 		maskImage.style.height = height;
 	}, 0);
 
-
-	// 弹出层出现后给弹出层添加监听事件，
-	// 点击图片之外区域隐藏
-	mask.addEventListener("click", addListener);
-
-	function addListener(event){
+	let addListener = (event) => {
 		let e = window.event ? window.event : event;
 	    let target = e.srcElement || e.target;
 
@@ -49,24 +44,27 @@ const createMask = (inner) => {
 	        }
 	    }
 	}
+
+	// 弹出层出现后给弹出层添加监听事件，
+	// 点击图片之外区域隐藏
+	mask.addEventListener("click", addListener);
 }
 
+/*
+  创建节点插入文档中
+ */
 const insertNode = (element) => {
 	let body = document.body;
-
-	// 创建节点，插入<body>中。
 	let div = document.createElement("div");
 	div.id = "mask";
 	div.innerHTML = element;
 	body.appendChild(div);
 
-	/* 使用闭包，保持当前DOM节点的引用
-		返回函数，在需要的时候删除该DOM节点
+	/* 
+	   使用闭包，保持当前DOM节点的引用
+	   返回函数，在需要的时候删除该DOM节点
 	 */
-	function removeNode(){
-		body.removeChild(div);
-	}
-
+	let removeNode = () => body.removeChild(div)
 	return removeNode;
 }
 

@@ -27,4 +27,14 @@ const login = (name, pass) => {
 	return postMessage(url, data);
 }
 
-export default { getImageList, deleteItem, uploadImage, getNumber, login }
+const getSmallPicId = (id) => {
+	let urlWithParams = url + "?concrete=getSmallPicId&id=" + id;
+	return getMessage(urlWithParams);
+}
+
+const getPicSrc = (id) => {
+	let urlWithParams = url + "?concrete=getPicSrc&id=" + id;
+	return getMessage(urlWithParams);
+}
+
+export default { getImageList, deleteItem, uploadImage, getNumber, login, getSmallPicId, getPicSrc }

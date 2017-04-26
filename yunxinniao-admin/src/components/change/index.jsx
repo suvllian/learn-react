@@ -7,17 +7,31 @@ export default class Change extends Component{
 		super(props);
 
 		this.state = {
-			// 选中图片进行更换
+			// 是否选中图片进行上传
 			isChange: false,
 
-			// 更换成功
+			// 上传成功
 			uploadSuccess: true,
 
-			// 选中的图片的索引
-			index: 0
+			// 被点击的小图的索引
+			index: 0,
+
+			// 是否是小图
+			isSmall: 0,
+
+			// 新创建的ID
+			id: 0,
+
+			// 传递到后台的ID
+			dealId: 0,
+
+			// 大图图片链接
+			imageSrc: "http://gw.alicdn.com/tfs/TB1_NDSPVXXXXcUXVXXXXXXXXXX-900-500.jpg",
+
+			// 小图图片链接
+			smallImage: []
 		}
 
-		// 当前图片的ID
 		this.id = this.props.params.id;
 	}
 
@@ -31,8 +45,8 @@ export default class Change extends Component{
 				</h1>
 				<header className="image-header">
 					<label htmlFor="uploadBtn">
-						<img src={ require("./../../assets/work-" + this.id + ".jpg") }  
-							onClick={ this.addImage.bind(this, -1)}/>
+						<img src={ "/static/img/" + this.state.imageSrc}   
+							onClick={ this.addImage.bind(this, 0, 0)}/>	
 						<div className="user-btn">
 							<span className="blue-Btn margin">点击替换大图</span>	
 						</div>	
@@ -40,12 +54,12 @@ export default class Change extends Component{
 				</header>
 				<div className="image-block">
 					{
-						[1, 2, 3, 4, 5].map((item, index) => 
-							<div key={index} onClick={ this.addImage.bind(this, index)} >
+						this.state.smallImage.map((item, index) => 
+							<div key={index} onClick={ this.addImage.bind(this, index+1, 1, item.id)} >
 								<label htmlFor="uploadBtn">
-									<img src={require("./../../assets/work-" + this.id + "-" + item + ".jpg")} />
+									<img src={ "/static/img/" + item.src }  />
 									<div className="user-btn">
-										<span className="blue-Btn margin">替换第{item}张</span>	
+										<span className="blue-Btn margin">替换第{index+1}张</span>	
 									</div>
 								</label>
 							</div>
@@ -98,50 +112,56 @@ export default class Change extends Component{
 
 	// 上传图片
 	upload() {
+		console.log(this.id);
 		let file = this.refs.file.files[0];
 		let index = this.state.index;
+		let isSmall = this.state.isSmall;
+
+		let id = (isSmall == 0) ? this.id : this.state.dealId;
+
+		// 生成文件名
 		let fileName = "";
+		fileName = "work-" + this.id + Date.now();
 
-		if(index == 0) {
-			fileName = "work-" + this.id;
-		} else {
-			fileName = "work-" + this.id + "-" + index;
-		}
-
+		// 构造formData上传文件并传参
 		let fileData = new FormData();
 		fileData.append("concrete", "uploadImage");
 		fileData.append("myfile", file);
 		fileData.append("filename", fileName);
+		fileData.append("id", id);
+		fileData.append("isSmall", isSmall);
 
+		// 上传文件
 		api.uploadImage(fileData, fileName).then(res => {
-			if (res.data == 1){
+			if (res.data != 0){
 				this.changeState();
 
-				// 上传成功后，刷新当前页面。重新加载图片
-				setTimeout(()=> {
-					location.reload();
-				}, 500);
+				setTimeout(() => {
+					let index = this.state.index;
+					if(isSmall == 0) {
+						let imageSrc = res.data;
+						this.setState({ imageSrc: imageSrc });
+					} else {
+						let smallImage = this.state.smallImage;
+						index = index - 1;
+						smallImage[index].src = res.data;
+						this.setState({ smallImage: smallImage });
+					}
+					
+				}, 666);
 			} else{
 				this.setState({ uploadSuccess: false});
-			}  
+			}   
 		}).catch(err => {
-		    
+		    this.setState({ uploadSuccess: false});
 		});
 	}
 
-	addImage(index) {
+	addImage(index, bSmall, id) {
 		this.setState({ isChange: true });
-		this.setState({ index: index+1 });
-
-		let url = "";
-		if(index == -1) {
-			url = "/static/img/work-" + this.id + ".jpg";
-		} else {
-			url = "/static/img/work-" + this.id + "-" + (index+1) + ".jpg";
-		}
-		setTimeout(() => {
-			this.refs.img.src = url;
-		}, 0);
+		this.setState({ index: index });
+		this.setState({ isSmall: bSmall });
+		this.setState({ dealId: id });
 	}
 
 	// 预览图片
@@ -154,5 +174,18 @@ export default class Change extends Component{
 	    fileReader.onload = (oFREvent) => {
 	        imageDom.src = oFREvent.target.result;
 	    };
+	}
+
+	componentDidMount() {
+		let id = this.props.params.id;
+
+		api.getPicSrc(id).then(res => {
+			this.setState({ imageSrc: res.data.src});
+		});
+
+		api.getSmallPicId(id).then(res => {
+			this.setState({ smallImage: res.data});
+		});
+		
 	}
 }

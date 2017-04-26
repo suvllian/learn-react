@@ -1,12 +1,17 @@
 import React, {Component} from 'react';
 import { createMask } from './../../utils/createMask.js';
+import axios from 'axios';
+
+const url = "./static/api/index.php";
+// const url = "http://127.0.0.1/api/index.php";
 
 export default class WaterfallItem extends Component{
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			now: 1
+			now: 1, 
+			imageList: []
 		} 	
 	}
 
@@ -14,7 +19,7 @@ export default class WaterfallItem extends Component{
 		return (
 			<div className="pin" onClick={ this.createBMask.bind(this, this.props.id) }>
 				<div className="box">
-					<img src={ require("./../../assets/work-" + this.props.id + ".jpg") } />
+					<img src={ "/static/img/" + this.props.src } />
 				</div>
 			</div>
 		)
@@ -23,7 +28,7 @@ export default class WaterfallItem extends Component{
 	createBMask(index) {
 		let html = '<div class="mask-contain">\
 						<div class="mask-image" id="mask-image">\
-							<img src="./static/img/work-'+ index + "-" + this.state.now + '.jpg">\
+							<img src="./static/img/' + this.state.imageList[this.state.now-1].src + '">\
 						</div>\
 						<div class="slide-action">\
 							<div class="slide-action-left">\
@@ -70,6 +75,17 @@ export default class WaterfallItem extends Component{
 
 	changeMaskSrc(nowIndex) {
 		this.setState({ now: nowIndex });
-		this.img.src = './static/img/work-'+ this.props.id + "-" + nowIndex + '.jpg';
+		this.img.src = './static/img/'+ this.state.imageList[nowIndex].src;
+	}
+
+	getSmallPicId(id) {
+		let urlWithParams = url + "?concrete=getSmallPicId&id=" + id;
+		return axios.get(urlWithParams);
+	}
+
+	componentDidMount() {
+		this.getSmallPicId(this.props.id).then(response => {
+			this.setState({ imageList: response.data });
+		})
 	}
 }

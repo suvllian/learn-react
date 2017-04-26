@@ -75,7 +75,6 @@ export default class Waterfall extends Component{
 		return axios.get(urlWithParams);
 	}
 
-
 	getArray(array1, array2, page) {
 		let section = (page - 1) * 2;
 		let originallength = array1.length;

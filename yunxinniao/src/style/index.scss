@@ -54,9 +54,14 @@
 	height: 700px;
 	position: relative;
 
+	.slider-items {
+		height: 100%;
+		width: 100%;
+	}
+
 	.slider-item {
 		width: 100%;
-		height: 700px;
+		height: 100%;
 		position: relative;
 		float: left;
 		margin-right: -100%;
@@ -75,6 +80,10 @@
 		opacity: 1;
 		display: block;
 	}
+
+	::after {
+		clear: both;
+	}
 }
 
 
@@ -82,6 +91,7 @@
 .about-top {
 	background-color: #0036ff;
 	position: relative;
+	clear: both;
 	color: #fff;
 
 	p {
@@ -374,9 +384,16 @@
 	overflow: auto;
 	background-color: rgba(0,0,0,0.8);
 
+	&:hover {
+		.slide-action-butn, .close-btn {
+			visibility: visible;
+		}
+	}
+
 	.slide-action-butn{
-	    height: 108px;
-	    margin-top: -54px;
+		visibility: hidden;
+	    height: 72px;
+	    margin-top: -36px;
 	    position: absolute;
 	    top: 50%;
 	    transition: 0.5s all ease;
@@ -385,6 +402,12 @@
 	    display: flex;
 	    justify-content: center;
 	    align-items: center;
+	    border-radius: 36px;
+		background-color: rgba(0,0,0, 0.32);
+
+		&:hover {
+			background-color: rgba(0,0,0, 0.42);
+		}
 
 	    .fa{
 	    	color: #fff;
@@ -393,17 +416,19 @@
 
 	.slide-action-left{
 		left: 0;
+		z-index: 3000;
 
 		.slide-action-butn{
-			left: 0;
+			left: 16px;
 		}
 	}
 
 	.slide-action-right{
 		right: 0;
+		z-index: 3000;
 
 		.slide-action-butn{
-			right: 0;
+			right: 16px;
 		}
 	}
 }
@@ -416,11 +441,10 @@
 	justify-content: center;
 	align-items: center;
 }
+
 .mask-image{
-	width: 0;
-	height: 0;
-	border-radius: 6px;
-	z-index: 3000;
+	width: 100%;
+	height: 100%;
 	text-align: center;
 	transition: 0.5s all ease-out;
 	display: flex;
@@ -429,9 +453,32 @@
 
 	img{
 		display: block;
-		border-radius: 6px;
-		width: auto;
-		max-width: 100%;
-		height: 100%;
+		width: 100%;
+		max-height: 86%;
+		height: auto;
 	}
+}
+
+.close-btn {
+	position: fixed;
+	right: 20px;
+	top: 20px;
+	visibility: hidden;
+    height: 42px;
+    transition: 0.5s all ease;
+    width: 42px;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 21px;
+	background-color: rgba(0,0,0, 0.32);
+
+	&:hover {
+		background-color: rgba(0,0,0, 0.42);
+	}
+
+    .fa{
+    	color: #fff;
+    }
 }

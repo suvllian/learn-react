@@ -65,9 +65,13 @@ export default class Slider extends Component{
 	}
 
 	componentDidMount() {
+		let sliderContain = document.querySelector(".slider");
 		this.slider = document.querySelectorAll(".slider-item");
 		let slideImage = this.slideImage.bind(this);
 		this.handle = setInterval(slideImage, 4000);
+
+		let width = document.body.clientWidth;
+		sliderContain.style.height = 0.43 * width + "px";
 	}
 
 }

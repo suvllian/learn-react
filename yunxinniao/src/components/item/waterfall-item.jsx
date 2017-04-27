@@ -2,15 +2,15 @@ import React, {Component} from 'react';
 import { createMask } from './../../utils/createMask.js';
 import axios from 'axios';
 
-const url = "./static/api/index.php";
-// const url = "http://127.0.0.1/api/index.php";
+// const url = "./static/api/index.php";
+const url = "http://127.0.0.1/api/index.php";
 
 export default class WaterfallItem extends Component{
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			now: 1, 
+			now: 0, 
 			imageList: []
 		} 	
 	}
@@ -27,8 +27,11 @@ export default class WaterfallItem extends Component{
 
 	createBMask(index) {
 		let html = '<div class="mask-contain">\
-						<div class="mask-image" id="mask-image">\
-							<img src="./static/img/' + this.state.imageList[this.state.now-1].src + '">\
+		                <div class="close-btn">\
+		                    <i class="fa fa-times fa-3x"></i>\
+		                </div>\
+						<div class="mask-image">\
+							<img id="mask-image" src="./static/img/' + this.state.imageList[this.state.now].src + '">\
 						</div>\
 						<div class="slide-action">\
 							<div class="slide-action-left">\
@@ -47,7 +50,7 @@ export default class WaterfallItem extends Component{
 
 		let leftBtn = document.querySelector("#left");
 		let rightBtn = document.querySelector("#right");
-		this.img = document.querySelector("#mask-image img");
+		this.img = document.querySelector("#mask-image");
 
 		leftBtn.addEventListener("click", this.prev.bind(this));
 		rightBtn.addEventListener("click", this.next.bind(this));
@@ -55,8 +58,8 @@ export default class WaterfallItem extends Component{
 
 	prev() {
 		let nowIndex = this.state.now;
-		if (nowIndex == 1) {
-			nowIndex = 5;
+		if (nowIndex == 0) {
+			nowIndex = 4;
 		} else {
 			nowIndex = nowIndex - 1;
 		}
@@ -65,8 +68,8 @@ export default class WaterfallItem extends Component{
 
 	next() {
 		let nowIndex = this.state.now;
-		if (nowIndex == 5) {
-			nowIndex = 1;
+		if (nowIndex == 4) {
+			nowIndex = 0;
 		} else {
 			nowIndex = nowIndex + 1;
 		}

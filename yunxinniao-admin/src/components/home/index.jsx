@@ -24,7 +24,6 @@ export default class Download extends Component{
 							<tr>
 								<th>序号</th>
 								<th>图片</th>
-								<th>详情</th>
 								<th><Link to="/add">添加</Link></th>
 							</tr>
 						</thead>

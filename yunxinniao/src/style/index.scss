@@ -453,16 +453,29 @@
 
 	img{
 		display: block;
-		width: 100%;
-		max-height: 86%;
+		transition: 0.5s all ease-out;
+		width: 0;
+		height: 0;
+	}
+
+	// 宽屏样式
+	.width-mask {
+		width: auto;
+		max-width: 96%;
+		height: 100%;
+	}
+
+	// 长屏样式
+	.height-mask {
 		height: auto;
+		width: 100%;
 	}
 }
 
 .close-btn {
 	position: fixed;
-	right: 20px;
-	top: 20px;
+	right: 16px;
+	top: 16px;
 	visibility: hidden;
     height: 42px;
     transition: 0.5s all ease;
@@ -473,6 +486,7 @@
     align-items: center;
     border-radius: 21px;
 	background-color: rgba(0,0,0, 0.32);
+	cursor: pointer;
 
 	&:hover {
 		background-color: rgba(0,0,0, 0.42);

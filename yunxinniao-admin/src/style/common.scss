@@ -68,15 +68,17 @@ body{
 	padding: 0 12%;
 
 	img {
-		width: 100%; 
+		max-width: 100%; 
 		height: auto;
+		max-height: 560px;
 		cursor: pointer;
 	}
 }
 
-.image-block {
-	column-count: 5;
-	column-gap: 10px;
+.image-item {
+	width: 20%;
+	padding: 0 1%;
+	float: left;
 
 	img {
 		width: 100%;
@@ -85,9 +87,10 @@ body{
 }
 
 .change-block{
-	width: 100%;
-	column-count: 5;
-	column-gap: 10px;
+	position: fixed;
+	top: 120px;
+	left: 30px;
+	width: 300px;
 	
 	img {
 		max-width: 100%; 

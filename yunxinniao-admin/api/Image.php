@@ -63,16 +63,35 @@ class Image extends Handler
 	}
 
 	public function getImage(){
-		$page = ($_GET["page"] - 1) * 12;
-		$sql = "SELECT * FROM photo LIMIT $page, 12";
-		$result = $this->dataBaseHandle->fetchAll($sql);
+		$bigPage = ($_GET["page"] - 1) * 12;
+		$smallPage = ($_GET["page"] - 1) * 60;
+
+		// 首图信息数组 
+		$getBigSql = "SELECT * FROM photo ORDER BY id DESC LIMIT $bigPage, 12";
+		$bigResult = $this->dataBaseHandle->fetchAll($getBigSql);
+
+		// 对应小图信息数组
+		$getSmallSql = "SELECT * FROM photo,photopic WHERE photo.id = photopic.photoid ORDER BY photo.id DESC LIMIT $smallPage, 60";
+		$smallResult = $this->dataBaseHandle->fetchAll($getSmallSql);
+
+		// 数组长度
+		$length = count($bigResult);
+		$result = array();
+
+		for ($i = 0; $i < $length; $i++) {
+			$result[$i] = array(
+					"big" => $bigResult[$i],
+					"small" => array_slice($smallResult, ($i*5), 5)
+				);
+		}
+
 		echo json_encode($result);	
 	}
 
 	public function getPicSrc(){
-		$id = $_GET["id"] - 0;
-		$sql = "SELECT * FROM photo WHERE id = $id";
-		$result = $this->dataBaseHandle->fetchOne($sql);
+		$page = ($_GET["page"] - 1) * 60;
+		$sql = "SELECT * FROM photo,photopic WHERE photo.id = photopic.photoid ORDER BY photo.id DESC LIMIT $page, 60";
+		$result = $this->dataBaseHandle->fetchAll($sql);
 		echo json_encode($result);	
 	}
 
@@ -144,7 +163,7 @@ class Image extends Handler
 
 	public function getSmallPicId(){
 		$id = $_GET["id"] - 0;
-		$sql = "SELECT * FROM photopic WHERE photoid = $id";
+		$sql = "SELECT * FROM photopic WHERE photoid = $id ORDER BY id";
 		$result = $this->dataBaseHandle->fetchAll($sql);
 		echo json_encode($result);
 	}

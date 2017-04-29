@@ -55,7 +55,7 @@ export default class Change extends Component{
 				<div className="image-block">
 					{
 						this.state.smallImage.map((item, index) => 
-							<div key={index} onClick={ this.addImage.bind(this, index+1, 1, item.id)} >
+							<div className="image-item" key={index} onClick={ this.addImage.bind(this, index+1, 1, item.id)} >
 								<label htmlFor="uploadBtn">
 									<img src={ "/static/img/" + item.src }  />
 									<div className="user-btn">
@@ -112,7 +112,6 @@ export default class Change extends Component{
 
 	// 上传图片
 	upload() {
-		console.log(this.id);
 		let file = this.refs.file.files[0];
 		let index = this.state.index;
 		let isSmall = this.state.isSmall;
@@ -133,6 +132,9 @@ export default class Change extends Component{
 
 		// 上传文件
 		api.uploadImage(fileData, fileName).then(res => {
+			res.request.upload.onprogress = (e) => {
+				console.log(e);
+			}
 			if (res.data != 0){
 				this.changeState();
 

@@ -2,31 +2,20 @@ const createMask = (inner) => {
 	let removeNode = insertNode(inner);
 
 	// 获取弹出层Node节点
-	let maskImage = document.querySelector(".mask-image img");
+	let maskImage = document.querySelector("#mask-image");
 	let mask = document.querySelector("#mask");
 
 	// 获取屏幕信息
 	let screenInfo = getScreenScale();
-	let height = 0;
-	let width  = 0;
 
 	// 判断是长屏还是宽屏，即电脑屏幕和手机屏幕的区别
 	if (screenInfo.scale > 1) {
 		// 宽屏
-		height = "auto";
-		width  = screenInfo.width + 'px';
+		maskImage.className = "width-mask";
 	} else {
 		// 长屏
-		// height = screenInfo.width * 2 / 4 + 'px';
-		height = "auto";
-		width  = "100%";
+		maskImage.className = "height-mask";
 	}
-
-	// 设置弹出层宽高
-	setTimeout( ()=> {
-		// maskImage.style.width = width;
-		// maskImage.style.height = height;
-	}, 0);
 
 	let addListener = (event) => {
 		let e = window.event ? window.event : event;

@@ -53,7 +53,7 @@ export default class Change extends Component{
 				<div className="image-block">
 					{
 						this.state.smallImage.map((item, index) => 
-							<div key={index} onClick={ this.addImage.bind(this, index+1, 1, item.id)} >
+							<div className="image-item" key={index} onClick={ this.addImage.bind(this, index+1, 1, item.id)} >
 								<label htmlFor="uploadBtn">
 									<img src={ item.src }  />
 									<div className="user-btn">

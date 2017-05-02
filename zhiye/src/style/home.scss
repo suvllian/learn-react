@@ -1,0 +1,61 @@
+.index-container{
+	height: 960px;
+	width: 100%;
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.index-content{
+	width: 888px;
+	height: 320px;
+	background-color: #8f9393; 
+	opacity: 0.8;
+}
+
+.student,.company,.direct{
+	height: 100%;
+	text-align: center;
+	padding-top: 12%;
+	cursor: pointer;
+	transition: 0.5s all ease;
+}
+
+.direct {
+	background-color: #d4d5d5;	
+
+	p{
+		color: #607d8f;
+		font-size: 2.8em;
+	}
+
+	&:hover{
+		background-color: #8f9393;
+	}
+}
+
+.company {
+	p{
+		color: #ccc;
+		font-size: 2.8em;
+	}
+
+	&:hover{
+		background-color: #fff;
+	}
+}
+.student {
+	position: relative;
+	
+	p{
+		color: #e6f2f8;
+		font-size: 2.8em;
+	}
+
+	&:hover{
+		background-color: #d4d5d5;
+	}
+}
+

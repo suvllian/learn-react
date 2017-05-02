@@ -1,0 +1,24 @@
+.login {
+	position: relative;
+}
+
+.login-header {
+	background-color: #607d8f;
+    height: 323px;
+    position: relative;
+    width: 100%;
+}
+
+.login-form {
+	padding: 50px 50px 60px 50px;
+	width: 500px;
+	position: absolute;
+	left: 50%;
+	margin-left: -250px;
+	top: 161px;
+	z-index: 3;
+
+	input {
+		width: 100%;
+	}
+}

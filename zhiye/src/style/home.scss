@@ -1,61 +1,48 @@
-.index-container{
-	height: 960px;
-	width: 100%;
-	background-size: 100% 100%;
-	background-repeat: no-repeat;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+.home {
+	background-color: #f4f4f4;
+
+	img {
+		width: 100%;
+	}
 }
 
-.index-content{
-	width: 888px;
-	height: 320px;
-	background-color: #8f9393; 
-	opacity: 0.8;
+.home-aside {
+	padding: 32px 3.3%;
+	box-shadow: 5px 5px 5px #ddd;
 }
 
-.student,.company,.direct{
-	height: 100%;
-	text-align: center;
-	padding-top: 12%;
+.sign-btn {
+	background-color: #607d8f;
+	color: #fff;
 	cursor: pointer;
-	transition: 0.5s all ease;
 }
 
-.direct {
-	background-color: #d4d5d5;	
-
-	p{
-		color: #607d8f;
-		font-size: 2.8em;
+form {
+	label {
+		font-size: 20px;
 	}
 
-	&:hover{
-		background-color: #8f9393;
-	}
-}
-
-.company {
-	p{
-		color: #ccc;
-		font-size: 2.8em;
-	}
-
-	&:hover{
-		background-color: #fff;
-	}
-}
-.student {
-	position: relative;
-	
-	p{
-		color: #e6f2f8;
-		font-size: 2.8em;
-	}
-
-	&:hover{
-		background-color: #d4d5d5;
+	input {
+		box-sizing: border-box;
+		display: block;
+		width: 100%;
+		margin-bottom: 8px;
+		padding: 12px;
+		border: 1px solid #eee;
 	}
 }
 
+.home-article {
+	padding: 32px 3.3%;
+}
+
+.home-article-top {
+	.col-md-3 {
+		padding: 0 16px;
+	}
+}
+
+.home-info {
+	font-size: 28px;
+	font-weight: bold;
+}

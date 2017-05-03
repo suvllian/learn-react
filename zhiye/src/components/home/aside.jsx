@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router';
 
-export default class VisitorAside extends Component{
+export default class HomeAside extends Component{
 	constructor(props) {
 		super(props);
 
@@ -12,16 +12,16 @@ export default class VisitorAside extends Component{
 
 	render() {
 		return (
-			<aside className="col-md-4 visitor-aside">
-				<section className="visitor-aside-top">
+			<aside className="col-md-4 home-aside">
+				<section className="home-aside-top">
 					<img src={require("./../../assets/zaker.jpg")} />
 				</section>
 
-				<section className="visitor-aside-image">
+				<section className="home-aside-image">
 					<img src={require("./../../assets/visitor1.jpg")} />
 				</section>
 
-				<section className="visitor-aside-form">
+				<section className="home-aside-form">
 					<form>
 						<div className="form-item">
 						    <label htmlFor="username">EMAIL</label>

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { Link } from 'react-router';
 import api from './../../api/';
 
-export default class Change extends Component{
+export default class Company extends Component{
 	constructor(props) {
 		super(props);
 

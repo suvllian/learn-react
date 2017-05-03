@@ -2,12 +2,15 @@ body{
 	width: 100%;
 	min-width: 1170px;
 	font-family: consolas,Menlo,PingFang SC,Microsoft YaHei,monospace;
+	font-size: 16px;
 }
   
-.row::after{
-	clear: both;
-	content: " ";
-    display: table;
+.row {
+	&::before, &::after{
+		clear: both;
+		content: " ";
+	    display: table;
+	}
 }
 
 .col-md-1-2 {
@@ -64,38 +67,101 @@ body{
 	position: relative;
 }
 
+.text-center {
+	text-align: center;
+}
+
+.container {
+	width: 1170px;
+	margin: 0 auto;
+	padding: 0 10px;
+	position: relative;
+}
+
+
+.header{
+	position: relative;
+	z-index: 1000;
+
+	&::after {
+		content: "";
+		clear: both;
+	}
+}
+
 .header-nav {
 	height: 32px;
 	width: 100%;
 	background-color: #607d8f;
 	margin: 0;
 	position: relative;
-}
 
-.header-logo {
-	padding: 8px 0 0 10%;
-	line-height: 16px;
-	
 	a {
-		font-size: 16px;
-		font-weight: bold;
 		color: #fff;
-		letter-spacing: 4px;
+		position: relative;
+		margin-right: 12px;
+		line-height: 22px;
+		display: inline-block;	
+		padding: 0 6px;
+	}
+
+	.link-after-rule {
+		&::after {
+			height: 16px;
+			width: 2px;
+			right: -6px;
+			top: 4px;
+		}
 	}
 }
 
-.header-link {
-	font-size: 16px;
+.header-left {
+	padding-top: 2px;
+}
+
+.header-right {
 	position: absolute;
 	top: 2px;
-	right: 120px;
+	right: 0px;	
+}
+
+.header-main {
+	height: 60px;
+	background-color: #fafafa;
+	line-height: 60px;
+}
+
+.header-ul {
+	display: inline-block;
+	position: relative;
+	top: -4px;
+}
+
+.header-li {
+	display: inline-block;
+	padding: 0 28px;
 
 	a {
-		display: inline-block;
-		padding: 0 6px;
-		font-size: 16px;
-		line-height: 22px;
-		color: #fff;
+		color: #aaa;
+		font-size: 20px;
+	}
+
+	&:hover {
+		border-bottom: 2px solid #607d8f;
+
+		a {
+			color: #000;
+		}
+	}
+}
+
+.header-logo {
+	font-size: 28px;
+	padding: 0 120px 0 60px;
+	display: inline-block;
+
+	a {
+		color: #607d8f;
 	}
 }
 
@@ -119,6 +185,7 @@ body{
 .copyright{
 	margin-left: 5%;
 }
+
 .footer-link{
 	position: absolute;
 	top: 0;

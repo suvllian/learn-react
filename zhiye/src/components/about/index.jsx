@@ -2,17 +2,12 @@ import React, {Component} from 'react';
 import { Link } from 'react-router';
 
 export default class About extends Component{
-	constructor(props) {
-		super(props);
-
-		this.state = {
-			
-		}
-	}
-
 	render() {
 		return (
 			<article className="about">
+				<h2 className="about-title">
+					关于职页
+				</h2>
 				<section className="row">
 					<div className="col-md-4">
 						<img className="response-img" src={require("./../../assets/topbg.jpg")} />

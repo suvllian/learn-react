@@ -25,6 +25,12 @@ body{
 	position: relative;
 }
 
+.col-md-2 {
+	width: 16.8%;
+	float: left;
+	position: relative;
+}
+
 .col-md-3 {
 	width: 25%;
 	float: left;
@@ -33,6 +39,12 @@ body{
 
 .col-md-4 {
 	width: 33.3%;
+	float: left;
+	position: relative;
+}
+
+.col-md-5 {
+	width: 41.6%;
 	float: left;
 	position: relative;
 }
@@ -69,6 +81,10 @@ body{
 
 .text-center {
 	text-align: center;
+}
+
+.right {
+	float: right;
 }
 
 .container {
@@ -166,8 +182,8 @@ body{
 }
 
 .footer{
-	height: 42px;
-	line-height: 42px;
+	height: 62px;
+	line-height: 62px;
 	width: 100%;
 	overflow: hidden;	
 	position: relative;
@@ -201,6 +217,6 @@ body{
 		background-color: #fff;
 		position: absolute;
 		right: -6px;
-		top: 11px;
+		top: 22px;
 	}
 }

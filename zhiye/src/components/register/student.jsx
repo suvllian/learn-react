@@ -29,20 +29,7 @@ export default class Login extends Component{
 							<p>邮箱注册</p>
 						</div>
 					</div>
-					<form>
-						<div className="form-item"> 
-							{this.renderTab()}
-						</div>
-						<div className="form-item"> 
-							<input type="text" placeholder="账户名（6-20位）" />
-						</div>
-						<div className="form-item"> 
-							<input type="password" placeholder="密码（6-20位）" />
-						</div>	
-						<div className="form-item"> 
-							<input type="submit" value="注册" className="sign-btn"/>
-						</div>	
-					</form>
+					{this.renderTab()}
 					<p className="text-center">已有账号？<Link to="/login" className="color-link">立即登录</Link></p>
 				</section>
 
@@ -60,11 +47,39 @@ export default class Login extends Component{
 	renderTab() {
 		if (this.state.isPhone) {
 			return (
-				<input type="text" placeholder="请输入手机号" />
+				<form>
+					<div className="form-item"> 
+						<input type="text" placeholder="请输入手机号" />
+					</div>
+					<div className="form-item"> 
+						<input type="text" placeholder="账户名（6-20位）" />
+					</div>
+					<div className="form-item"> 
+						<input type="password" placeholder="密码（6-20位）" />
+					</div>	
+					<div className="form-item"> 
+						<input type="submit" value="注册" className="sign-btn"/>
+					</div>	
+				</form>
 			)
 		} else {
 			return (
-				<input type="text" placeholder="请输入邮箱" />
+				<form>
+					<div className="form-item"> 
+						<input type="text" placeholder="请输入邮箱" />
+					</div>
+					<div className="form-item"> 
+						<input type="text" placeholder="账户名（6-20位）" />
+					</div>
+					<div className="form-item"> 
+						<input type="password" placeholder="密码（6-20位）" />
+					</div>	
+					<div className="form-item"> 
+						<Link to="/register/stuOne">
+							<input type="submit" value="注册" className="sign-btn"/>
+						</Link>
+					</div>	
+				</form>
 			)
 		}
 	}

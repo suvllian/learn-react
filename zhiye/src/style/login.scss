@@ -64,17 +64,32 @@
 
 .tab-caption {
 	font-size: 18px;
-	color: #ddd;
+	color: #555;
 	padding: 16px 0;
+	border: 1px solid #fff;
 	border-bottom: 1px solid #607d8f;
-	border-top: 1px solid #fff;
-	border-left: 1px solid #fff;
 	margin-bottom: 16px;
 	transition: 0.5s all ease;
 	cursor: pointer;
+
+	&:hover {
+		background-color: #607d8f;
+		color: #fff;
+	}
 }
 
 .active-tab {
 	background-color: #607d8f;
 	color: #fff;
+}
+
+
+.resume {
+	background-image: url(https://www.lgstatic.com/www/static/mycenter/modules/common/img/mr_basicbg_a44f09a.png);
+	background-size: 100% 100%;
+	padding: 42px 0;
+
+	.about {
+		width: 620px;
+	}
 }

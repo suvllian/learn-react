@@ -8,5 +8,6 @@ require('./style/home.scss');
 require('./style/student.scss');
 require('./style/login.scss');
 require('./style/about.scss');
+require('./style/register.scss');
 
 render(router, document.getElementById('app'));

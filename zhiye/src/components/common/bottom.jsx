@@ -11,7 +11,7 @@ export default class Bottom extends Component{
 				<div className="footer-link">
 					<Link to="/about" className="link-after-rule">关于我们</Link>
 					<Link to="/about" className="link-after-rule">联系我们</Link>
-					<Link to="">FAQ</Link>
+					<Link to="/about">FAQ</Link>
 				</div>
 			</footer>
 		)

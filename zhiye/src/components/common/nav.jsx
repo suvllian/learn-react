@@ -8,7 +8,7 @@ export default class Nav extends Component{
 				<div className=" header-nav"> 
 					<div className="container"> 
 						<div className="header-left">
-							<Link to="/" className="link-after-rule">职页APP</Link>
+							<Link to="/" className="link-after-rule"><i className="fa fa-android"></i>职页APP</Link>
 							<Link to="/login/company">进入企业版</Link>
 						</div>
 						<div className="header-right">
@@ -28,6 +28,7 @@ export default class Nav extends Component{
 							<li className="header-li"><Link to="/">首页</Link></li>
 							<li className="header-li"><Link to="/">公司</Link></li>
 							<li className="header-li"><Link to="/">定制</Link></li>
+							<li className="header-li"><Link to="/">校园招聘</Link></li>
 						</ul>
 					</div>
 				</div>

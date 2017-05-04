@@ -4,6 +4,10 @@
 	img {
 		width: 100%;
 	}
+
+	.form-item {
+		padding: 0;
+	}
 }
 
 .home-aside {
@@ -11,10 +15,15 @@
 	box-shadow: 5px 5px 5px #ddd;
 }
 
+.fa {
+	margin-right: 4px;
+}
+
 .sign-btn {
 	background-color: #607d8f;
 	color: #fff;
 	cursor: pointer;
+	border-radius: 3px;
 }
 
 form {
@@ -23,6 +32,15 @@ form {
 	}
 
 	input {
+		box-sizing: border-box;
+		display: block;
+		width: 100%;
+		margin-bottom: 8px;
+		padding: 12px;
+		border: 1px solid #eee;
+	}
+
+	textarea {
 		box-sizing: border-box;
 		display: block;
 		width: 100%;

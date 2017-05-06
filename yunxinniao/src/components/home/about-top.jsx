@@ -4,10 +4,10 @@ export default class AboutTop extends Component{
 	render() {
 		return (
 			<div className="about-top" id="about">
-				<div className="container">
+				<div className="container row">
 					<div className="col-md-3">
 						<p className="section-title">About</p>
-						<p className="section-title">Yinxinniao&Lingmei</p>
+						<p className="section-title">Yunxinniao Design Ltd.</p>
 					</div>
 					<div className="col-md-4">
 						<p>云信鸟成立于2014年10月，我们致力于设计与活动营销业务相结合，</p>

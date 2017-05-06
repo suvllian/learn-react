@@ -26,6 +26,7 @@ import StuResumeOne from './components/resume/stu-step1.jsx';
 import StuResumeTwo from './components/resume/stu-step2.jsx';
 import StuResumeThree from './components/resume/stu-step3.jsx';
 import StuResumeFour from './components/resume/stu-step4.jsx';
+import MyResume from './components/resume/myresume.jsx';
 
 const router = 
 <Router history={hashHistory}>
@@ -59,6 +60,7 @@ const router =
       <Route path="stuTwo" component={StuResumeTwo}/>
       <Route path="stuThree" component={StuResumeThree}/>
       <Route path="stuFour" component={StuResumeFour}/>
+      <Route path="myResume" component={MyResume}/>
     </Route>
 
   	<Route path="about" component={About} />

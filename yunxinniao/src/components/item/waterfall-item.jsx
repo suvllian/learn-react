@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { createMask } from './../../utils/createMask.js';
-import axios from 'axios';
 
 export default class WaterfallItem extends Component{
 	constructor(props) {

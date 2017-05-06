@@ -12,11 +12,11 @@ export default class HomeArticle extends Component{
 
 	render() {
 		return (
-			<article className="col-md-8 visitor-article">
+			<article className="col-md-8 home-article">
 				<section className="home-article-top row">
 					{
 						[5,2,3,4].map((item, index) => 
-							<div className="col-md-3">
+							<div className="col-md-3" key={index}>
 								<img src={require("./../../assets/visitor" + item +".jpg")} />
 							</div>
 						)

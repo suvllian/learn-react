@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-
+import React, { Component,PropTypes } from 'react';
+import { connect } from 'react-redux';
 import Aside from './aside.jsx';
 import Main from './main.jsx';
 

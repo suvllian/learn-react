@@ -173,7 +173,7 @@
 		list-style: none;
 
 		p{
-			line-height: 2;
+			line-height: 3;
 			white-space: pre;
 		}
 	}
@@ -262,7 +262,7 @@
 .box-contain {
     position: relative;
 	column-count: 2;
-	column-gap: 10px;
+	column-gap: 20px;
 
     &::after {
 	    clear: both;
@@ -286,7 +286,7 @@
 }
 
 .box{
-    padding: 5px 0;
+    padding: 10px 0;
     overflow: hidden;
 }
 
@@ -301,9 +301,9 @@
 .more {
 	text-align: center;
 	font-weight: 500;
-	font-size: 26px;
+	font-size: 24px;
 	cursor: pointer;
-	padding: 18px;
+	padding: 36px;
 
 	a {
 		color: #fff;
@@ -315,10 +315,12 @@
 	background-color: #000;
 	color: #fff;
 	position: relative;
+	font-size: 18px;
+	line-height: 2.6;
 
 	.panel-head {
 		font-weight: 400;
-		padding: 20px 0;
+		padding: 14px 0;
 		cursor: pointer;
 
 		&:hover {
@@ -463,11 +465,13 @@
 		width: auto;
 		max-width: 96%;
 		height: 100%;
+		padding: 20px 0;
 	}
 
 	// 长屏样式
 	.height-mask {
 		height: auto;
+		max-height: 92%;
 		width: 100%;
 	}
 }

@@ -1,0 +1,85 @@
+.resume-result {
+	width: 1170px;
+	margin: 0 auto 60px;
+}
+
+.resume-header {
+	height: 200px;
+	width: 100%;
+	background-image: url(https://www.lgstatic.com/www/static/mycenter/modules/common/img/tou_42952f6.png);
+	background-size: 100% 100%;
+}
+
+.resume-main {
+	background-color: #fafafa;
+	line-height: 1.8;
+}
+
+.resume-h {
+	font-size: 28px;
+	padding: 12px 0;
+	font-weight: 400;
+}
+
+.resume-section {
+	padding: 18px;
+
+	h2 {
+		font-size: 24px;
+		font-weight: 400;
+		position: relative;
+		text-align: center;
+
+		span {
+			display: inline-block;
+			padding: 6px 10px;
+			background-color: #eee;
+			border-radius: 12px;
+		}
+
+		&::before, &::after {
+			content: "";
+			display: block;
+			height: 1px;
+			width: 40%;
+			position: absolute;
+			background-color: #ccc;
+			top: 50%;
+		}
+
+		&::before {
+			left: 0;
+		}
+
+		&::after {
+			right: 0;
+		}
+	}
+
+	p {
+		margin-bottom: 8px;
+	}
+}
+
+.resume-link {
+
+	.col-md-3 {
+		background-color: #eee;
+		margin-right: 3px;
+		text-align: center;
+		padding: 8px;
+		color: #555;
+		cursor: pointer;
+		transition: 0.5s all ease;
+		border-radius: 3px;
+
+		&:hover{
+			background-color: #607d8f;
+			color: #fff;
+		}
+
+		&:first-child {
+			margin-left: -50px;
+		}
+	}
+}

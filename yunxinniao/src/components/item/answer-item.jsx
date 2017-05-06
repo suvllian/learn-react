@@ -29,7 +29,7 @@ export default class AnswerItem extends Component{
 						</div>
 					</div>		
 				</div>
-				<div className="panel-body" style={{height: this.state.show ? (this.props.line * 36 + 'px') : '0px'}}>
+				<div className="panel-body" style={{height: this.state.show ? (this.props.line * 56 + 'px') : '0px'}}>
 					<div className="row">
 						<div className="col-md-11-2">
 							

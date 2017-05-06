@@ -32,7 +32,7 @@ export default class Slider extends Component{
 						<LiItem changeItem={this.changeItem} list={this.state.list} currentItem={this.state.currentItem} />
 					</nav>
 					<div className="logo">
-						<a href="http://yunxinniao.com"><span>YUNXINNIAO&LINGMEI</span></a>
+						<a href="http://yunxinniao.com"><span>YUNXINNOA DESIGN LTD.</span></a>
 					</div>
 				</div>
 			</header>

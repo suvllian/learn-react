@@ -1,8 +1,10 @@
-import React, {Component} from 'react';
+import { connect } from 'react-redux';
+import React, { Component,PropTypes } from 'react';
 import { Link } from 'react-router';
 
-export default class StuEmailStepOne extends Component{
+class StuEmailStepOne extends Component{
 	render() {
+		const { phone, email } = this.props;
 		return (
 			<article className="about">
 				<h2 className="about-title">
@@ -10,7 +12,7 @@ export default class StuEmailStepOne extends Component{
 				</h2>
 				<section className="about-block border-bottom">
 					<h2 className="about-h">验证邮箱，完成注册</h2>
-					<p>我们已将验证邮件发送至邮箱：<a>1448478@qq.com</a></p>
+					<p>我们已将验证邮件发送至邮箱：<a>或</a></p>{phone}
 					<p>点击邮件内的链接即可完成注册，并可使用职页网所有功能。 </p>
 					<Link className="submit-btn" to="/register/stuTwo">登录邮箱验证</Link>
 				</section>
@@ -25,3 +27,12 @@ export default class StuEmailStepOne extends Component{
 		)
 	}
 }
+
+const getInfo = state => {
+    return {
+        phone: state.register.phone,
+        email: state.register.email
+    }
+}
+
+export default connect(getInfo)(StuEmailStepOne)

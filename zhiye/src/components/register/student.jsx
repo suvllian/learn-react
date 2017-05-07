@@ -2,7 +2,7 @@ import React, { Component,PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
-import { regByPhone, regByEmail } from './../../redux/actions/register.js'
+import { fetchPostsIfNeeded } from './../../redux/actions/index.js'
 
 class Register extends Component {
 	constructor(props) {
@@ -13,8 +13,17 @@ class Register extends Component {
 		}
 	}
 
+	componentDidMount() {
+		const { dispatch} = this.props;
+		dispatch(fetchPostsIfNeeded('frontend'));
+	}	
+
 	render() {
 		let isPhone = this.state.isPhone;
+		
+		const { posts } = this.props
+		console.log(posts);
+		console.log('数据已经传过来了，哈哈哈，终于成功了');
 
 		return (
 			<div className="login">
@@ -54,11 +63,10 @@ class Register extends Component {
 		const { regByPhone } = this.props;
 
 		let formObj = {};
-		formObj.klass = 1;
 		formObj.username = this.refs.username.value;
 		formObj.password = this.refs.username.value;
-		isPhone ? ((formObj.phone = this.refs.phone.value) ? regByPhone(formObj) : "") : 
-			((formObj.email = this.refs.email.value) ? regByEmail(formObj) : "") ;
+		// isPhone ? ((formObj.phone = this.refs.phone.value) ? regByPhone(formObj) : "") : 
+		// 	((formObj.email = this.refs.email.value) ? regByPhone(formObj) : "") ;
 	}
 
 	renderTab() {
@@ -102,13 +110,12 @@ class Register extends Component {
 	}
 }
 
-const getId = state => {
-    return {
-        username: state.Register.username
-    }
+function mapStateToProps(state) {
+	const { postsByReddit } = state
+	const { items: posts } = postsByReddit['frontend'] || { items: [] }
+	return { posts }
 }
 
 export default connect(
-	getId,
-	{ regByPhone, regByEmail }
+	mapStateToProps
 )(Register)

@@ -1,4 +1,5 @@
 // 注册
-export const REGBYPHONE = 'REGBYPHONE'
-export const RECEIVE_POSTS = 'RECEIVE_POSTS'
+export const REGISTER = 'REGISTER'
+export const REGISTER_SUCCESS = 'REGISTER_SUCCESS'
+export const REGISTER_FAIL = 'REGISTER_FAIL' 
 //注册

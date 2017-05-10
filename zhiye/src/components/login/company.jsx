@@ -1,13 +1,14 @@
-import React, {Component} from 'react';
+import React, { Component,PropTypes } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
-import bg from './../../assets/reg_bg.jpg';
+import bg from './../../assets/reg_bg.jpg'
 
 const RegBg = {
 	backgroundImage: `url(${bg})`
 }
 
-export default class Register extends Component{
+export default class LoginCompany extends Component{
 	constructor(props) {
 		super(props);
 		
@@ -15,7 +16,6 @@ export default class Register extends Component{
 			isPhone: true
 		}
 	}
-
 
 	render() {
 		let isPhone = this.state.isPhone;

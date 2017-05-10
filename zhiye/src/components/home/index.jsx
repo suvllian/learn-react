@@ -1,5 +1,7 @@
 import React, { Component,PropTypes } from 'react';
 import { connect } from 'react-redux';
+import ReactDOM from 'react-dom';
+
 import Aside from './aside.jsx';
 import Main from './main.jsx';
 
@@ -14,4 +16,5 @@ export default class Home extends Component{
 			</div>
 		)
 	}
+
 }

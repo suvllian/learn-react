@@ -6,7 +6,7 @@ import { syncHistoryWithStore } from 'react-router-redux'
 import routes from './routes.jsx';
 
 
-import finalCreateStore from './redux/store/configureStore'  //引入store配置
+import finalCreateStore from './redux/configureStore.js'  //引入store配置
 const store = finalCreateStore()
 
 require('./style/common.scss');

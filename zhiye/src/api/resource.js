@@ -1,14 +1,28 @@
-import axios from 'axios';
+import fetch from 'isomorphic-fetch'
 
-exports.postMessage = (url, data) => {
-	return axios.post(url, data,
-		{
-			'headers' : {
-				'Content-Type' : 'application/x-www-form-urlencoded'
-			},
-		})
+const URL = "http://127.0.0.1/zhiye/index.php";
+
+const getInit = {
+	method: "GET",
+	mode: "cors",
+	cache: "default"
 }
 
-exports.getMessage = (urlWithParams) => {
-	return axios.get(urlWithParams)
+const postInit = (formData) => {
+	return {
+		method: "POST",
+		mode: "cors",
+		cache: "default",
+		body: formData
+	}
+}
+
+exports.postFetch = (formData) => {
+	let data = postInit(formData);
+	return fetch(URL, data);
+}
+
+exports.getFetch = (data) => {
+	let urlWithParams = URL + "?" + data;
+	return fetch(urlWithParams);
 }

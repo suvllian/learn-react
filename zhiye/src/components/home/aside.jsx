@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router';
+import ReactDOM from 'react-dom';
 
 export default class HomeAside extends Component{
 	constructor(props) {

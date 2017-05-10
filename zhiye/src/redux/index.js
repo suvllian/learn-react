@@ -4,8 +4,7 @@ import { routerReducer } from 'react-router-redux'
 import register from './reducers/register.js'
 
 const rootReducer = combineReducers({
-	register,
-	routing: routerReducer
+    register
 })
 
 export default rootReducer;

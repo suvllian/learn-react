@@ -1,25 +1,32 @@
 import api from './../../api/index.js' 
 import { REGISTER, REGISTER_SUCCESS, REGISTER_FAIL } from './../type.js'
+import { hashHistory } from 'react-router';
 
-function receivePosts(data, res) {
+function registerAction(data, res) {
+	hashHistory.push("/register/stuOne");
+
 	return {
-		type: REGISTER,
-		id: res
+		type: REGISTER_SUCCESS,
+		id: res,
+		username: data.get("username"),
+		password: data.get("password"),
+		klass: data.get("klass"),
+		email: data.get("email"),
+		phone: data.get("phone"),
 	}
 }
 
-function fetchPosts(data) {
+function registerPosts(data) {
     return function (dispatch) {
         return api.register(data)
-		    .then(response => response.json())
 		    .then(json => {
-			    dispatch(receivePosts(data, json))
+			    dispatch(registerAction(data, json))
 		    })
     }
 }
 
 export function fetchPostsIfNeeded(data) {
 	return (dispatch, getState) => {
-		return dispatch(fetchPosts(data))
+		return dispatch(registerPosts(data))
 	}
 }

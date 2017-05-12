@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
-export default class StuResumeStepOne extends Component{
+import { fillResumeStepOne } from './../../redux/actions/resume.js'
+
+class StuResumeStepOne extends Component{
 	render() {
 		return (
 			<article className="about">
@@ -10,32 +13,58 @@ export default class StuResumeStepOne extends Component{
 				</h2>
 				<form>
 					<div className="form-item"> 
-						<input type="text" placeholder="姓名" />
+						<input type="text" placeholder="姓名" ref="realName" />
 					</div>
 					<div className="form-item row"> 
 						<div className="col-md-5">
-							<input type="text" placeholder="最高学历" />
+							<input type="text" placeholder="最高学历" ref="highestDegree" />
 						</div>
 						<div className="col-md-5 right">
-							<input type="text" placeholder="工作年限" />
+							<input type="text" placeholder="工作年限" ref="year" />
 						</div>
 					</div>
 					<div className="form-item"> 
-						<input type="text" placeholder="手机号" />
+						<input type="text" placeholder="手机号" ref="phone" />
 					</div>
 					<div className="form-item"> 
-						<input type="password" placeholder="邮箱" />
+						<input type="text" placeholder="邮箱" ref="email" />
 					</div>	
 					<div className="form-item"> 
-						<input type="text" placeholder="所在城市" />
+						<input type="text" placeholder="所在城市" ref="city" />
 					</div>
 					<div className="form-item"> 
-						<Link to="resume/stuTwo">
-							<input type="submit" value="下一步，继续完善职业信息" className="sign-btn" />
-						</Link>
+						<input type="submit" value="下一步，继续完善职业信息" className="sign-btn"
+							onClick={this.getFormData.bind(this)} />
 					</div>	
 				</form>
 			</article>
 		)
 	}
+
+	getFormData(e) {
+		e.preventDefault();
+
+		const { dispatch, id } = this.props;
+		let formData = new FormData();
+
+		formData.append("id", id);
+		formData.append("name", this.refs.realName.value);
+		formData.append("highestDegree", this.refs.highestDegree.value);
+		formData.append("year", this.refs.year.value);
+		formData.append("phone", this.refs.phone.value);
+		formData.append("email", this.refs.email.value);
+		formData.append("city", this.refs.city.value);
+
+		dispatch(fillResumeStepOne(formData));	
+	}
 }
+
+function mapStateToProps(state) {
+	const { register } = state;
+	const { id } = register;
+	return { id }
+}
+
+export default connect(
+	mapStateToProps
+)(StuResumeStepOne)

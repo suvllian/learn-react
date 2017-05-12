@@ -6,4 +6,11 @@ const register = (formData) => {
 	return promiseRes;
 }
 
-export default { register }
+const fillResume = (formData) => { 
+	formData.append("concrete", "resume");
+	let promiseRes = postFetch(formData);
+	return promiseRes;
+}
+
+
+export default { register, fillResume }

@@ -41,9 +41,7 @@ class Register extends Component {
 							<input type="password" placeholder="密码（6-20位）" ref="password" />
 						</div>	
 						<div className="form-item"> 
-							<Link to="/register/stuOne">
-								<input type="submit" value="注册" className="sign-btn" onClick={this.getFormData.bind(this)} />
-							</Link>
+							<input type="submit" value="注册" className="sign-btn" onClick={this.getFormData.bind(this)} />
 						</div>	
 					</form>
 					<p className="text-center">已有账号？<Link to="/login" className="color-link">立即登录</Link></p>

@@ -19,10 +19,10 @@ const postInit = (formData) => {
 
 exports.postFetch = (formData) => {
 	let data = postInit(formData);
-	return fetch(URL, data);
+	return fetch(URL, data).then(response => response.json());
 }
 
 exports.getFetch = (data) => {
 	let urlWithParams = URL + "?" + data;
-	return fetch(urlWithParams);
+	return fetch(urlWithParams).then(response => response.json());
 }

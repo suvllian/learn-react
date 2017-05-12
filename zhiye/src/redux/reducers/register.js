@@ -12,9 +12,14 @@ const initialState = {
 
 function registerReducer(state = initialState, action) {
 	switch (action.type) {
-		case REGISTER:
+		case REGISTER_SUCCESS:
 			return Object.assign({}, state, {
-			  id: action.id 
+			  id: action.id,
+			  username: action.username,
+			  password: action.password,
+			  klass: action.klass,
+			  phone: action.phone,
+			  email: action.email,
 			})
 		default:
 			return state

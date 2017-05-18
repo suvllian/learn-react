@@ -97,6 +97,4 @@ function mapStateToProps(state) {
 	return { username, password, id }
 }
 
-export default connect(
-	mapStateToProps
-)(Register)
+export default connect(mapStateToProps)(Register)

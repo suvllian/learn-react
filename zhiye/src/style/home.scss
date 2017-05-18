@@ -12,7 +12,6 @@
 
 .home-aside {
 	padding: 32px 3.3%;
-	box-shadow: 5px 5px 5px #ddd;
 }
 
 .fa {
@@ -52,15 +51,47 @@ form {
 
 .home-article {
 	padding: 32px 1.2%;
+	background-color: #fff;
 }
 
 .home-article-top {
 	.col-md-3 {
 		padding: 0 16px;
+		border: 1px solid #eee;
 	}
 }
 
 .home-info {
 	font-size: 28px;
 	font-weight: bold;
+}
+
+.pli-item {
+	border-bottom: 1px dashed #e1e1e1;
+    height: 123px;
+    position: relative;
+    line-height: 28px;
+}
+
+.pli-top {
+	background-color: #fff;
+    height: 62px;
+    padding-left: 15px;
+    padding-top: 22px;
+}
+
+.pli-top-h {
+	height: 34px;
+	color: #607d8f;
+}
+
+.pli-top-p {
+	height: 28px;
+}
+
+.pli-bottom {
+	background-color: #fafafa;
+	height: 39px;
+    padding: 0 15px;
+    margin-top: 20px;
 }

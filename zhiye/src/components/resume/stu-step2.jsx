@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
 import { fillResumeStepTwo } from './../../redux/actions/resume.js'
+import { mapStateToProps } from '../../connect/register.js'
 
 class StuResumeStepTwo extends Component{
 	render() {
@@ -45,6 +46,7 @@ class StuResumeStepTwo extends Component{
 		let formData = new FormData();
 
 		formData.append("id", id);
+		formData.append("step", "two");
 		formData.append("school", this.refs.school.value);
 		formData.append("major", this.refs.major.value);
 		formData.append("degree", this.refs.degree.value);
@@ -54,12 +56,4 @@ class StuResumeStepTwo extends Component{
 	}
 }
 
-function mapStateToProps(state) {
-	const { register } = state;
-	const { id } = register;
-	return { id }
-}
-
-export default connect(
-	mapStateToProps
-)(StuResumeStepTwo)
+export default connect(mapStateToProps)(StuResumeStepTwo)

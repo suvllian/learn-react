@@ -34,6 +34,4 @@ function mapStateToProps(state) {
 	return { email, phone }
 }
 
-export default connect(
-	mapStateToProps
-)(StuEmailStepOne)
+export default connect(mapStateToProps)(StuEmailStepOne)

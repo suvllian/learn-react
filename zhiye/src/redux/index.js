@@ -1,12 +1,14 @@
 import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
 
-import register from './reducers/register.js'
-import resume from './reducers/resume.js'
+import Register from './reducers/register.js'
+import Resume from './reducers/resume.js'
+import Login from './reducers/login.js'
 
 const rootReducer = combineReducers({
-    register,
-    resume
+    Register,
+    Resume,
+    Login
 })
 
 export default rootReducer;

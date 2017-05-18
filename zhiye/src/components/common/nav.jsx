@@ -1,7 +1,17 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
-export default class Nav extends Component{
+import { mapStateToProps } from '../../connect/isLogin.js';
+
+class Nav extends Component{
+	constructor(props) {
+		super(props);
+		
+		this.state = {
+			loginSuccess: false
+		}
+	}
 	render() {
 		return (
 			<header className="header">
@@ -11,10 +21,7 @@ export default class Nav extends Component{
 							<Link to="/" className="link-after-rule"><i className="fa fa-android"></i>职页APP</Link>
 							<Link to="/login/company">进入企业版</Link>
 						</div>
-						<div className="header-right">
-							<Link to="/login" className="link-after-rule">登录</Link>
-							<Link to="/register">注册</Link>
-						</div>
+						{this.renderNav()}
 					</div>
 				</div>
 
@@ -35,4 +42,25 @@ export default class Nav extends Component{
 			</header>
 		)
 	}
+
+	renderNav() {
+		let { isLoginSuccess } = this.props;
+		if (!isLoginSuccess) {
+			return (
+			    <div className="header-right">
+					<Link to="/login" className="link-after-rule">登录</Link>
+					<Link to="/register">注册</Link>
+				</div>
+			)
+		}
+
+		return (
+			<div className="header-right">
+				<Link to="/resume/myResume" className="link-after-rule">我的简历</Link>
+				<Link to="/login">投递箱</Link>
+			</div>
+		)
+	}
 }
+
+export default connect(mapStateToProps)(Nav)

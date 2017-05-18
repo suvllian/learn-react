@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
 
-export default class StuResume extends Component{
+import { getResumeResult } from './../../redux/actions/resume.js'
+
+class StuResume extends Component{
 	render() {
 		return (
 			<article className="resume-result row">
@@ -40,7 +43,7 @@ export default class StuResume extends Component{
 					<section className="resume-link row">
 						<div className="col-md-3">
 							<p><i className="fa fa-home-3x"></i></p>
-							<p>投递箱</p>
+							<p>投递</p>
 						</div>
 
 						<div className="col-md-3">
@@ -62,4 +65,20 @@ export default class StuResume extends Component{
 			</article>
 		)
 	}
+
+	componentDidMount() {
+		const { dispatch } = this.props;
+
+		dispatch(getResumeResult("id=1"));	
+	}
 }
+
+function mapStateToProps(state) {
+	const { register } = state;
+	const { id } = register;
+	return { id }
+}
+
+export default connect(
+	mapStateToProps
+)(StuResume)

@@ -1,5 +1,6 @@
 import api from './../../api/index.js' 
-import { RESUME_STEP_ONE, RESUME_STEP_TWO, RESUME_STEP_THREE, RESUME_STEP_FOUR } from './../type.js'
+import { RESUME_STEP_ONE, RESUME_STEP_TWO, RESUME_STEP_THREE, 
+		RESUME_STEP_FOUR, GET_RESUME } from './../type.js'
 import { hashHistory } from 'react-router';
 
 function fillResumeOneAction(data, res) {
@@ -9,7 +10,7 @@ function fillResumeOneAction(data, res) {
 		type: RESUME_STEP_ONE,
 		name: data.get("name"),
 		highestDegree: data.get("highestDegree"),
-		year: data.get("year"),
+		workYears: data.get("year"),
 		phone: data.get("phone"),
 		email: data.get("email"),
 		city: data.get("city"),
@@ -62,18 +63,33 @@ export function fillResumeStepTwo(data) {
 	}
 }
 
-function fillResumeThirdAction(data, res) {
+function fillResumeThreeAction(data, res) {
 	hashHistory.push("/resume/stuFour");
+
+	let works = {};
+	works.company = data.get("company");
+	works.job = data.get("job");
+	works.startTime = data.get("startTime");
+	works.endTime = data.get("endTime");
 
 	return {
 		type: RESUME_STEP_THREE,
-		id: res,
-		name: data.get("name"),
-		highestDegree: data.get("highestDegree"),
-		year: data.get("year"),
-		phone: data.get("phone"),
-		email: data.get("email"),
-		city: data.get("city"),
+		work: works
+	}
+}
+
+function fillResumeThreePosts(data) {
+    return function (dispatch) {
+        return api.fillResume(data)
+		    .then(json => {
+			    dispatch(fillResumeThreeAction(data, json))
+		    })
+    }
+}
+
+export function fillResumeStepThree(data) {
+	return (dispatch, getState) => {
+		return dispatch(fillResumeThreePosts(data))
 	}
 }
 
@@ -82,12 +98,42 @@ function fillResumeFourAction(data, res) {
 
 	return {
 		type: RESUME_STEP_FOUR,
-		id: res,
-		name: data.get("name"),
-		highestDegree: data.get("highestDegree"),
-		year: data.get("year"),
-		phone: data.get("phone"),
-		email: data.get("email"),
-		city: data.get("city"),
+		words: data.get("words")
+	}
+}
+
+function fillResumeFourPosts(data) {
+    return function (dispatch) {
+        return api.fillResume(data)
+		    .then(json => {
+			    dispatch(fillResumeFourAction(data, json))
+		    })
+    }
+}
+
+export function fillResumeStepFour(data) {
+	return (dispatch, getState) => {
+		return dispatch(fillResumeFourPosts(data))
+	}
+}
+
+function getResumeAction(data, res) {
+	return {
+		type: GET_RESUME
+	}
+}
+
+function getResumePosts(data) {
+    return function (dispatch) {
+        return api.getResume(data)
+		    .then(json => {
+			    dispatch(getResumeAction(data, json))
+		    })
+    }
+}
+
+export function getResumeResult(data) {
+	return (dispatch, getState) => {
+		return dispatch(getResumePosts(data))
 	}
 }

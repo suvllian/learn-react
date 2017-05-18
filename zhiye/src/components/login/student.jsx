@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router';
 
+import { loginFunction } from './../../redux/actions/login.js'
+
 export default class Login extends Component{
 	constructor(props) {
 		super(props);

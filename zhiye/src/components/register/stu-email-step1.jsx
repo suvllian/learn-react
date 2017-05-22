@@ -28,10 +28,4 @@ class StuEmailStepOne extends Component{
 	}
 }
 
-function mapStateToProps(state) {
-	const { register } = state;
-	const { email, phone } = register;
-	return { email, phone }
-}
-
-export default connect(mapStateToProps)(StuEmailStepOne)
+export default connect()(StuEmailStepOne)

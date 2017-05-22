@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
 import { fetchPostsIfNeeded } from './../../redux/actions/register.js'
+import { mapStateToProps } from '../../connect/register.js'
 
 class Register extends Component {
 	constructor(props) {
@@ -89,12 +90,6 @@ class Register extends Component {
 			)
 		}
 	}
-}
-
-function mapStateToProps(state) {
-	const { register } = state;
-	const { username, password, id } = register;
-	return { username, password, id }
 }
 
 export default connect(mapStateToProps)(Register)

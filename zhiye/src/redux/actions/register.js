@@ -17,12 +17,12 @@ function registerAction(data, res) {
 }
 
 function registerPosts(data) {
-    return function (dispatch) {
-        return api.register(data)
-		    .then(json => {
-			    dispatch(registerAction(data, json))
-		    })
-    }
+  return function (dispatch) {
+    return api.register(data)
+    .then(json => {
+	    dispatch(registerAction(data, json))
+    })
+  }
 }
 
 export function fetchPostsIfNeeded(data) {

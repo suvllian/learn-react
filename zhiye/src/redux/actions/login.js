@@ -9,12 +9,12 @@ function loginAction(data, res) {
 }
 
 function loginPosts(data) {
-    return function (dispatch) {
-        return api.login(data)
-		    .then(json => {
-			    dispatch(loginAction(data, json))
-		    })
-    }
+  return function (dispatch) {
+    return api.login(data)
+    .then(json => {
+	    dispatch(loginAction(data, json))
+    })
+  }
 }
 
 export function loginFunction(data) {

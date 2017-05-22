@@ -18,12 +18,12 @@ function fillResumeOneAction(data, res) {
 }
 
 function fillResumeOnePosts(data) {
-    return function (dispatch) {
-        return api.fillResume(data)
-		    .then(json => {
-			    dispatch(fillResumeOneAction(data, json))
-		    })
-    }
+  return function (dispatch) {
+    return api.fillResume(data)
+    .then(json => {
+	    dispatch(fillResumeOneAction(data, json))
+    })
+  }
 }
 
 export function fillResumeStepOne(data) {
@@ -49,12 +49,12 @@ function fillResumeTwoAction(data, res) {
 }
 
 function fillResumeTwoPosts(data) {
-    return function (dispatch) {
-        return api.fillResume(data)
-		    .then(json => {
-			    dispatch(fillResumeTwoAction(data, json))
-		    })
-    }
+	return function (dispatch) {
+    return api.fillResume(data)
+    .then(json => {
+	    dispatch(fillResumeTwoAction(data, json))
+    })
+	}
 }
 
 export function fillResumeStepTwo(data) {
@@ -79,12 +79,12 @@ function fillResumeThreeAction(data, res) {
 }
 
 function fillResumeThreePosts(data) {
-    return function (dispatch) {
-        return api.fillResume(data)
-		    .then(json => {
-			    dispatch(fillResumeThreeAction(data, json))
-		    })
-    }
+  return function (dispatch) {
+    return api.fillResume(data)
+    .then(json => {
+	    dispatch(fillResumeThreeAction(data, json))
+    })
+  }
 }
 
 export function fillResumeStepThree(data) {
@@ -103,12 +103,12 @@ function fillResumeFourAction(data, res) {
 }
 
 function fillResumeFourPosts(data) {
-    return function (dispatch) {
-        return api.fillResume(data)
-		    .then(json => {
-			    dispatch(fillResumeFourAction(data, json))
-		    })
-    }
+  return function (dispatch) {
+    return api.fillResume(data)
+    .then(json => {
+	    dispatch(fillResumeFourAction(data, json))
+    })
+  }
 }
 
 export function fillResumeStepFour(data) {
@@ -124,12 +124,12 @@ function getResumeAction(data, res) {
 }
 
 function getResumePosts(data) {
-    return function (dispatch) {
-        return api.getResume(data)
-		    .then(json => {
-			    dispatch(getResumeAction(data, json))
-		    })
-    }
+  return function (dispatch) {
+    return api.getResume(data)
+    .then(json => {
+	    dispatch(getResumeAction(data, json))
+    })
+  }
 }
 
 export function getResumeResult(data) {

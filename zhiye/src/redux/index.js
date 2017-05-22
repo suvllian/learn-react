@@ -6,9 +6,9 @@ import Resume from './reducers/resume.js'
 import Login from './reducers/login.js'
 
 const rootReducer = combineReducers({
-    Register,
-    Resume,
-    Login
+  Register,
+  Resume,
+  Login
 })
 
 export default rootReducer;

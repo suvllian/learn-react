@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
 import { fillResumeStepOne } from './../../redux/actions/resume.js'
-import { mapStateToProps } from '../../connect/register.js';
+import { mapStateToProps } from '../../connect/register.js'
 
 class StuResumeStepOne extends Component{
 	render() {

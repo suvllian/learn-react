@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
+import api from './../../api/'
 import { fetchPostsIfNeeded } from './../../redux/actions/register.js'
 import { mapStateToProps } from '../../connect/register.js'
 
@@ -10,7 +11,8 @@ class Register extends Component {
 		super(props);
 
 		this.state = {
-			isPhone: true
+			isPhone: true,
+			alertType: 0
 		}
 	}
 
@@ -46,6 +48,7 @@ class Register extends Component {
 						</div>	
 					</form>
 					<p className="text-center">已有账号？<Link to="/login" className="color-link">立即登录</Link></p>
+					<p className="text-center" style={{color: 'red'}}>{this.renderAlert()}</p>
 				</section>
 
 				<footer className="login-bottom">
@@ -68,18 +71,62 @@ class Register extends Component {
 
 		formData.append("username", this.refs.username.value);
 		formData.append("password", this.refs.password.value);
-		formData.append("klass", 1);
 		isPhone ? formData.append("phone", this.refs.phone.value) : 
 			formData.append("email", this.refs.email.value);
 
 		dispatch(fetchPostsIfNeeded(formData));	
 	}
 
+	inspectPhone(e) {
+		let phone = e.target.value.replace(/\D/g, "");
+		let alertType = phone.length === 11 ? 0 : 1;
+		this.setState({ alertType: alertType });
+
+		if (!alertType) {
+			let table = "user"
+			let column = "phone"
+			let value = phone
+			api.checkValue(`table=${table}&column=${column}&value=${value}`).
+			  then(res => {
+			  	res == 1 ? this.setState({alertType: 2}) : this.setState({alertType: 0})
+			  })
+		}
+	}
+
+	renderAlert() {
+		let type = this.state.alertType;
+
+    switch (type){
+    	case 1:
+    	  return (
+          <span>请输入正确的手机号</span>
+    	  )
+    	  break;
+    	case 2:
+    	  return (
+    	  	<span>手机号已注册</span>
+    	  )
+    	  break;
+    	case 3:
+    	  return (
+    	  	<span>请输入正确的邮箱</span>
+    	  )
+    	  break;
+    	case 4:
+    	  return (
+    	  	<span>邮箱已注册</span>
+    	  )
+    	  break;
+    	default: 
+    	  return (<span></span>)
+    }
+	}
+
 	renderTab() {
 		if (this.state.isPhone) {
 			return (
 				<div className="form-item"> 
-					<input type="text" placeholder="请输入手机号" ref="phone" />
+					<input type="text" placeholder="请输入手机号" ref="phone" onBlur={this.inspectPhone.bind(this)} />
 				</div>
 			)
 		} else {

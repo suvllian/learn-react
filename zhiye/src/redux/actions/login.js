@@ -1,7 +1,9 @@
 import api from './../../api/index.js' 
 import { LOGIN, LOGIN_SUCCESS, LOGIN_FAIL } from './../type.js'
+import { hashHistory } from 'react-router'
 
 function loginAction(data, res) {
+	hashHistory.push("/resume/myResume");
 	return {
 		type: LOGIN_SUCCESS,
 		id: res

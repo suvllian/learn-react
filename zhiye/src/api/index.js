@@ -1,29 +1,37 @@
 import { postFetch, getFetch } from './resource.js';
 
-const login = (formData) => { 
+exports.login = (formData) => { 
 	formData.append("concrete", "login");
 	let promiseRes = postFetch(formData);
 	return promiseRes;
 }
 
-const register = (formData) => { 
+exports.register = (formData) => { 
 	formData.append("concrete", "register");
 	let promiseRes = postFetch(formData);
 	return promiseRes;
 }
 
-const fillResume = (formData) => { 
+exports.fillResume = (formData) => { 
 	formData.append("concrete", "resume");
 	let promiseRes = postFetch(formData);
 	return promiseRes;
 }
 
-const getResume = (getInfo) => { 
+exports.getResume = (getInfo) => { 
 	let data = "concrete=getStuInfo&" + getInfo;
 	let promiseRes = getFetch(data);
 	return promiseRes;
 }
 
+exports.registerCompany = (formData) => {
+	formData.append("concrete", "company");
+	let promiseRes = postFetch(formData);
+	return promiseRes;
+}
 
-
-export default { register, fillResume, getResume, login }
+exports.checkValue = (getInfo) => {
+	let data = "concrete=check&" + getInfo;
+	let promiseRes = getFetch(data);
+	return promiseRes;
+}

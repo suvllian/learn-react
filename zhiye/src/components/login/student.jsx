@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
+import { mapStateToProps } from '../../connect/isLogin.js'
 import { loginFunction } from './../../redux/actions/login.js'
 
-export default class Login extends Component{
+class Login extends Component{
 	constructor(props) {
 		super(props);
 
@@ -21,14 +23,9 @@ export default class Login extends Component{
 
 				<section className="login-form">
 					<div className="row">
-						<div className={isPhone ? "col-md-6 tab-caption text-center active-tab" : "col-md-6 tab-caption text-center"} 
+						<div className={isPhone ? "tab-caption text-center active-tab" : "col-md-6 tab-caption text-center"} 
 							onClick={this.setIsPhone.bind(this, true)}>
 							<p>手机登录</p>
-						</div>
-
-						<div className={isPhone ? "col-md-6 tab-caption text-center" : "col-md-6 tab-caption text-center active-tab"} 
-							onClick={this.setIsPhone.bind(this, false)}>
-							<p>邮箱登录</p>
 						</div>
 					</div>
 					<form>
@@ -36,9 +33,9 @@ export default class Login extends Component{
 							{this.renderTab()}
 						</div>
 						<div className="form-item"> 
-							<input type="password" placeholder="请输入密码" />
+							<input type="password" placeholder="请输入密码" ref="password" />
 						</div>	
-						<div className="form-item"> 
+						<div className="form-item" onClick={this.login.bind(this)}> 
 							<input type="submit" value="登录" className="sign-btn"/>
 						</div>	
 					</form>
@@ -52,6 +49,20 @@ export default class Login extends Component{
 		)
 	}
 
+	login(e) {
+		e.preventDefault();
+
+		const { dispatch } = this.props;
+		let username = this.refs.username.value,
+		  password = this.refs.password.value,
+	    formData = new FormData();
+
+	    formData.append("username", username);
+	    formData.append("password", password);
+
+	    dispatch(loginFunction(formData));	
+	}
+
 	setIsPhone(isPhoneReg) {
 		this.setState({ isPhone: isPhoneReg });
 	}
@@ -59,7 +70,7 @@ export default class Login extends Component{
 	renderTab() {
 		if (this.state.isPhone) {
 			return (
-				<input type="text" placeholder="请输入手机号" />
+				<input type="text" placeholder="请输入手机号"  ref="username" />
 			)
 		} else {
 			return (
@@ -68,3 +79,5 @@ export default class Login extends Component{
 		}
 	}
 }
+
+export default connect(mapStateToProps)(Login)

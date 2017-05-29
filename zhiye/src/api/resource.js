@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch'
 
-const URL = "http://127.0.0.1/zhiye/index.php";
+const URL = "http://suvllian.com/zhiye/static/zhiye/index.php";
 
 const getInit = {
 	method: "GET",

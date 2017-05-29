@@ -1,6 +1,4 @@
-import React, { Component,PropTypes } from 'react';
-import { connect } from 'react-redux';
-import ReactDOM from 'react-dom';
+import React, { Component } from 'react';
 
 import Aside from './aside.jsx';
 import Main from './main.jsx';

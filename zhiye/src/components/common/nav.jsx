@@ -17,11 +17,8 @@ class Nav extends Component{
 			<header className="header">
 				<div className=" header-nav"> 
 					<div className="container"> 
-						<div className="header-left">
-							<Link to="/" className="link-after-rule"><i className="fa fa-android"></i>职页APP</Link>
-							<Link to="/login/company">进入企业版</Link>
-						</div>
-						{this.renderNav()}
+						{this.renderNavLeft()}
+						{this.renderNavRight()}
 					</div>
 				</div>
 
@@ -43,11 +40,29 @@ class Nav extends Component{
 		)
 	}
 
-	renderNav() {
+	renderNavLeft() {
 		let { isLoginSuccess } = this.props;
 		if (!isLoginSuccess) {
 			return (
-			    <div className="header-right">
+				<div className="header-left">
+					<Link to="/" className="link-after-rule"><i className="fa fa-android"></i>职页APP</Link>
+					<Link to="/login/company">进入企业版</Link>
+				</div>
+			)
+		} else {
+			return (
+				<div className="header-left">
+					<Link to="/"><i className="fa fa-android"></i>职页APP</Link>
+				</div>
+			)
+		}
+	}
+
+	renderNavRight() {
+		let { isLoginSuccess } = this.props;
+		if (!isLoginSuccess) {
+			return (
+		    <div className="header-right">
 					<Link to="/login" className="link-after-rule">登录</Link>
 					<Link to="/register">注册</Link>
 				</div>

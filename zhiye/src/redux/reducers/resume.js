@@ -19,14 +19,14 @@ function resumeReducer(state = initialState, action) {
 	switch (action.type) {
 		case GET_RESUME:
 			return Object.assign({}, state, {
-			  id: action.baseinfo[0].id,
-			  name: action.baseinfo[0].name,
-			  highestDegree: action.baseinfo[0].highestDegree,
-			  workYears: action.baseinfo[0].workYears,
-			  city: action.baseinfo[0].city,
-			  phone: action.baseinfo[0].phone,
-			  email: action.baseinfo[0].email,
-			  work: action.work,
+			  id: action.baseinfo.id,
+			  name: action.baseinfo.name,
+			  highestDegree: action.baseinfo.highestDegree,
+			  workYears: action.baseinfo.workYears,
+			  city: action.baseinfo.city,
+			  phone: action.baseinfo.phone,
+			  email: action.baseinfo.email,
+			  work: action.work[0],
 			  education: action.school,
 			})
 		case RESUME_STEP_ONE:

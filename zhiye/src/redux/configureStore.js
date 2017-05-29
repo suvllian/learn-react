@@ -12,5 +12,8 @@ const createStoreWithMiddleware = compose(
 
 
 export default function configureStore(initialState) {
-  return createStoreWithMiddleware(rootReducer, initialState)
+  return createStoreWithMiddleware(rootReducer, initialState,
+  	// 触发 redux-devtools
+  	window.devToolsExtension ? window.devToolsExtension() : undefined
+  )
 }

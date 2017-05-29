@@ -1,4 +1,3 @@
-import { combineReducers } from 'redux'
 import { LOGIN, LOGIN_SUCCESS, LOGIN_FAIL } from './../type.js'
 
 const initialState = {

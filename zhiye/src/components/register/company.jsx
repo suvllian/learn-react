@@ -1,13 +1,16 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
-import bg from './../../assets/reg_bg.jpg';
+import bg from './../../assets/reg_bg.jpg'
+import { fetchPostsIfNeeded } from './../../redux/actions/company.js'
+import { mapStateToProps } from '../../connect/company.js'
 
 const RegBg = {
 	backgroundImage: `url(${bg})`
 }
 
-export default class Register extends Component{
+class Register extends Component{
 	constructor(props) {
 		super(props);
 		
@@ -35,7 +38,18 @@ export default class Register extends Component{
 								<p>邮箱注册</p>
 							</div>
 						</div>
-						{ this.renderTab() }
+						<form>
+							{ this.renderTab() }
+							<div className="form-item"> 
+								<input type="text" placeholder="账户名（6-20位）" ref="username" />
+							</div>
+							<div className="form-item"> 
+								<input type="password" placeholder="密码（6-20位）" ref="password" />
+							</div>	
+							<div className="form-item"> 
+								<input type="submit" value="注册" className="sign-btn" onClick={ this.getFormData.bind(this) } />
+							</div>	
+						</form>	
 						<p className="text-center">已有账号？<Link to="/login/company" className="color-link">立即登录</Link></p>
 					</div>
 				</section>
@@ -47,43 +61,36 @@ export default class Register extends Component{
 		this.setState({ isPhone: isPhoneReg });
 	}
 
+	getFormData(e) {
+		e.preventDefault();
+
+		const { dispatch } = this.props;
+		let isPhone = this.state.isPhone,	
+		    formData = new FormData();
+
+		formData.append("username", this.refs.username.value);
+		formData.append("password", this.refs.password.value);
+		isPhone ? formData.append("phone", this.refs.phone.value) : 
+			formData.append("email", this.refs.email.value);
+
+		dispatch(fetchPostsIfNeeded(formData));	
+	}
+
 	renderTab() {
 		if (this.state.isPhone) {
 			return (
-				<form>
-					<div className="form-item"> 
-						<input type="text" placeholder="请输入手机号" />
-					</div>
-					<div className="form-item"> 
-						<input type="text" placeholder="账户名（6-20位）" />
-					</div>
-					<div className="form-item"> 
-						<input type="password" placeholder="密码（6-20位）" />
-					</div>	
-					<div className="form-item"> 
-						<input type="submit" value="注册" className="sign-btn"/>
-					</div>	
-				</form>	
+				<div className="form-item"> 
+					<input type="text" placeholder="请输入手机号" ref="phone" />
+				</div>
 			)
 		} else {
 			return (
-				<form>
-					<div className="form-item"> 
-						<input type="text" placeholder="请输入邮箱" />
-					</div>
-					<div className="form-item"> 
-						<input type="text" placeholder="账户名（6-20位）" />
-					</div>
-					<div className="form-item"> 
-						<input type="password" placeholder="密码（6-20位）" />
-					</div>	
-					<div className="form-item"> 
-						<Link to="/register/comOne">
-							<input type="submit" value="注册" className="sign-btn"/>
-						</Link>
-					</div>	
-				</form>		
+				<div className="form-item"> 
+					<input type="text" placeholder="请输入邮箱" ref="email" />
+				</div>
 			)
 		}
 	}
 }
+
+export default connect(mapStateToProps)(Register)

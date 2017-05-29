@@ -119,7 +119,10 @@ export function fillResumeStepFour(data) {
 
 function getResumeAction(data, res) {
 	return {
-		type: GET_RESUME
+		type: GET_RESUME,
+		baseinfo: res.baseinfo[0],
+		work: res.work,
+		school: res.school[0]
 	}
 }
 

@@ -1,4 +1,4 @@
-import { REGISTER, REGISTER_SUCCESS, REGISTER_FAIL } from './../type.js'
+import { COMPANY_REGISTER, COMPANY_REGISTER_SUCCESS, COMPANY_REGISTER_FAIL } from './../type.js'
 
 const initialState = {
 	id: 0,
@@ -8,9 +8,9 @@ const initialState = {
 	email: "email"
 }
 
-function registerReducer(state = initialState, action) {
+function companyRegisterReducer(state = initialState, action) {
 	switch (action.type) {
-		case REGISTER_SUCCESS:
+		case COMPANY_REGISTER_SUCCESS:
 			return Object.assign({}, state, {
 			  id: action.id,
 			  username: action.username,
@@ -23,4 +23,4 @@ function registerReducer(state = initialState, action) {
 	}
 }
 
-export default registerReducer
+export default companyRegisterReducer

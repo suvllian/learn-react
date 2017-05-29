@@ -28,9 +28,9 @@ class StuResume extends Component{
 					<div className="resume-section">
 						<h2><span>实习经历</span></h2>
 						<div>
-							<p>{work.company}</p>
-							<p>{work.job}</p>
-							<p>{work.startTime}——{work.endTime}</p>
+							<p>公司：{work.company}</p>
+							<p>担任职位：{work.job}</p>
+							<p>任职时间：{work.startTime}——{work.endTime}</p>
 						</div>
 					</div>
 

@@ -65,7 +65,7 @@ export default class Slider extends Component{
 			slideNav();
 		};
 
-		let slideNav = this.throttle(changeNav,100,1000);
+		let slideNav = this.throttle(changeNav, 100, 1000);
 
 		function changeNav() {
 			let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;

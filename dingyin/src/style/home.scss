@@ -1,0 +1,97 @@
+.home {
+	background-color: #f4f4f4;
+
+	img {
+		width: 100%;
+	}
+
+	.form-item {
+		padding: 0;
+	}
+}
+
+.home-aside {
+	padding: 32px 3.3%;
+}
+
+.fa {
+	margin-right: 4px;
+}
+
+.sign-btn {
+	background-color: #607d8f;
+	color: #fff;
+	cursor: pointer;
+	border-radius: 3px;
+}
+
+form {
+	label {
+		font-size: 20px;
+	}
+
+	input {
+		box-sizing: border-box;
+		display: block;
+		width: 100%;
+		margin-bottom: 8px;
+		padding: 12px;
+		border: 1px solid #eee;
+	}
+
+	textarea {
+		box-sizing: border-box;
+		display: block;
+		width: 100%;
+		margin-bottom: 8px;
+		padding: 12px;
+		border: 1px solid #eee;
+	}
+}
+
+.home-article {
+	padding: 32px 1.2%;
+	background-color: #fff;
+}
+
+.home-article-top {
+	.col-md-3 {
+		padding: 0 16px;
+		border: 1px solid #eee;
+	}
+}
+
+.home-info {
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.pli-item {
+	border-bottom: 1px dashed #e1e1e1;
+    height: 123px;
+    position: relative;
+    line-height: 28px;
+}
+
+.pli-top {
+	background-color: #fff;
+    height: 62px;
+    padding-left: 15px;
+    padding-top: 22px;
+}
+
+.pli-top-h {
+	height: 34px;
+	color: #607d8f;
+}
+
+.pli-top-p {
+	height: 28px;
+}
+
+.pli-bottom {
+	background-color: #fafafa;
+	height: 39px;
+    padding: 0 15px;
+    margin-top: 20px;
+}

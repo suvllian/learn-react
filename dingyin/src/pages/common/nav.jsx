@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
+import { Link, IndexLink } from 'react-router';
 
 import { mapStateToProps } from '../../connect/isLogin.js';
 
@@ -18,8 +18,8 @@ class Nav extends Component{
 				<div className=" header-nav"> 
 					<div className="container"> 
 						<div className="header-left">
-							<Link to="/" className="link-after-rule"><i className="fa fa-android"></i>定音</Link>
-							<Link to="/">Just make a decssion</Link>
+							<IndexLink to="/" className="link-after-rule"><i className="fa fa-android"></i>定音</IndexLink>
+							<IndexLink to="/">Just make a decssion</IndexLink>
 						</div>
 						{this.renderNav()}
 					</div>
@@ -28,14 +28,14 @@ class Nav extends Component{
 				<div className="header-main">
 					<div className="container"> 
 						<div className="header-logo">
-							<Link to="/">定音</Link>
+							<IndexLink to="/">定音</IndexLink>
 						</div>
 
 						<ul className="header-ul">
-							<li className="header-li"><Link to="/">首页</Link></li>
-							<li className="header-li"><Link to="/">情感地图</Link></li>
-							<li className="header-li"><Link to="/">社区</Link></li>
-							<li className="header-li"><Link to="/">我的</Link></li>
+							<li className="header-li"><IndexLink to="/">首页</IndexLink></li>
+							<li className="header-li"><Link to="/community">情感地图</Link></li>
+							<li className="header-li"><Link to="/community">社区</Link></li>
+							<li className="header-li"><IndexLink to="/">我的</IndexLink></li>
 						</ul>
 					</div>
 				</div>

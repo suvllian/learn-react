@@ -1,6 +1,7 @@
 import fetch from 'isomorphic-fetch'
 
-const URL = "http://127.0.0.1/zhiye/index.php";
+// const URL = "http://127.0.0.1/zhiye/index.php";
+const URL = "http://localhost:3000/register";
 
 const getInit = {
 	method: "GET",

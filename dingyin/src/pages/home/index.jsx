@@ -1,6 +1,7 @@
 import React, { Component,PropTypes } from 'react';
 import { connect } from 'react-redux';
 import ReactDOM from 'react-dom';
+import axios from 'axios'
 
 import Slider from './../slider/';
 import Map from './map.jsx';
@@ -28,4 +29,14 @@ export default class Home extends Component{
 		)
 	}
 
+	getData() {
+		let URL = 'http://localhost:3000/users';
+		axios.get(URL).then((data) => {
+			console.log(data)
+		})
+	}
+
+  componentDidMount() {
+  	this.getData();
+  }
 }

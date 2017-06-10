@@ -1,10 +1,13 @@
 {
-  "name": "todolist",
+  "name": "dingyin",
   "version": "1.0.0",
   "description": "dingyin travel webapp",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --hot --inline"
+    "start": "webpack-dev-server --hot",
+    "clean": "rd/s/q dist && mkdir dist",
+    "prebuild": "npm run clean",
+    "build": "cross-env NODE_ENV=production webpack --config ./webpack.production.js --progress --profile --colors"
   },
   "repository": {
     "type": "git",
@@ -16,8 +19,8 @@
   "author": "suvllian",
   "license": "ISC",
   "dependencies": {
-    "acorn": "^5.0.3",
     "antd": "^2.10.4",
+    "axios": "^0.16.2",
     "babel-core": "^6.24.1",
     "css-loader": "^0.26.1",
     "fetch": "^1.1.0",
@@ -28,7 +31,6 @@
     "img-loader": "^2.0.0",
     "immutable": "^3.8.1",
     "isomorphic-fetch": "^2.2.1",
-    "lodash": "^4.17.4",
     "node-css": "^0.1.0",
     "node-sass": "^4.5.3",
     "open-browser-webpack-plugin": "^0.0.5",
@@ -48,8 +50,6 @@
     "redux-logger": "^3.0.1",
     "redux-thunk": "^2.2.0",
     "sass-loader": "^6.0.5",
-    "source-list-map": "^2.0.0",
-    "source-map": "^0.5.6",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.8"
   },

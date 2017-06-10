@@ -24,6 +24,4 @@ const getResume = (getInfo) => {
 	return promiseRes;
 }
 
-
-
 export default { register, fillResume, getResume, login }

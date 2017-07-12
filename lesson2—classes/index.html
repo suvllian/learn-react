@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Simple React</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<div class="wrapper"></div>
+<script type="text/javascript">
+import likeButton from 'likeButton.js'
+let wrapper = document.querySelector('.wrapper');
+let mount = (component, wrapper) => {
+  wrapper.appendChild(component.renderDOM())
+  component.onStateChange = (oldEl, newEl) => {
+    wrapper.insertBefore(newEl, oldEl)
+    wrapper.removeChild(oldEl)
+  }
+}
+mount(new LikeButton(), wrapper);
+</script>
+</body>
+</html>

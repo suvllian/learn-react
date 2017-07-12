@@ -15,7 +15,6 @@ const initialState = {
 
 // 通过dispatch action进入
 export default function update(state = initialState, action) {
-
     // 根据不同的action type进行state的更新
     switch(action.type) {
         case INCREASE:

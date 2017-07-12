@@ -1,7 +1,6 @@
 import fetch from 'isomorphic-fetch'
 
-// const URL = "http://127.0.0.1/zhiye/index.php";
-const URL = "http://localhost:3000/register";
+const URL = "http://localhost:3000";
 
 const getInit = {
 	method: "GET",
@@ -18,12 +17,10 @@ const postInit = (formData) => {
 	}
 }
 
-exports.postFetch = (formData) => {
-	let data = postInit(formData);
-	return fetch(URL, data).then(response => response.json());
+exports.postFetch = (path, formData) => {
+	return fetch(URL + path, postInit(formData)).then(response => response.json());
 }
 
-exports.getFetch = (data) => {
-	let urlWithParams = URL + "?" + data;
-	return fetch(urlWithParams).then(response => response.json());
+exports.getFetch = (path, data) => {
+	return fetch(URL + path + "?" + data).then(response => response.json());
 }

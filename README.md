@@ -10,6 +10,6 @@
 ```
 
 ## lessons
-* lessons1：用React实现一个To Do List
+* [lessons1](https://github.com/suvllian/learn-react/tree/master/lesson1%E2%80%94to-do-list)：用React实现一个To Do List
 ---
 如果你觉得对你有帮助，请start本项目，也是对我的一种鼓励，蟹蟹。

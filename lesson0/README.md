@@ -1,11 +1,11 @@
 # lesson0：了解React
-## React是什么？
+## 一、React是什么？
 React是Facebook的2013年推出的开源项目，是一个前端MVC框架，准确来说，React并不是一个完整的MVC框架，它更专注于VIEW（视图）层，需要配合社区中的一些库，如React-router、Redux等等才算是一个完整的MVC架构。  
 
-## 初始化一个React项目
+## 二、初始化一个React项目
 学任何一门语言和框架，往往是从hello world开始，不过只展示一句hello world就没有体现出React的优点，所以现在尝试写一个有交互Demo开始学习React。
 
-### Example1[源码地址](./example)
+### Example1[源码地址](./example1)
 
 这个Demo是一个计数器，每次点击按钮计数加1。  
 
@@ -62,7 +62,7 @@ export default ClickCounter
 
 通过React实现一个计数器，不用关注如何获取DOM节点，如何更新DOM节点，而是专注于“界面应该显示成什么样子”，只用关注每次点击之后counter值应该变为多少，获取DOM更新DOM的过程React会帮我们完成。这样使用react进行开发的优势就体现出来了。
 
-## React的优点
+## 三、React的优点
 对react有了一个初步的认识，现在系统的总结一下使用React的优点。  
 
 ### 组件化 
@@ -155,5 +155,5 @@ React.render(
 );
 ```
 
-## 总结 
-第0节课：《了解React》。通过一个实例简单的介绍一下React，了解React的优点和以往的开发模式的区别。
+## 四、总结 
+第0节课：《了解React》。通过一个实例简单的介绍一下React，了解React的优点和以往的开发模式的区别。  

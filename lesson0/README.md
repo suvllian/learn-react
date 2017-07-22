@@ -15,16 +15,23 @@ React是Facebook的2013年推出的开源项目，是一个前端MVC框架，准
 如果像以前一样用`jQuery`进行开发的话，首先要设置一个变量，然后获取Button的DOM节点，每次点击将变量的值加1，然后替换页面上的Counter值。  
 
 **jQuery实现**
-``` javascript
+``` html
+<div>
+  <button id="button">Click Me</button>
+  <p>Click Count: <span id="counter">0</span></p>
+</div>
+
+<script type="text/javascript">
 let counter = 0,
     counterDom = $("#counter")
 
 $("#button").click(function() {
   counter++;
-  counterDom.html('Click Count: ' + counter);
+  counterDom.text(counter);
 })
+</script>
 ```
-通过`jQuery`实现一个计数器，首先要关注怎么去获取DOM节点，然后要关注怎么通过修改DOM节点的内容去更新视图。在每次更新视图层的时候，p标签里的内容全部更新，性能消耗比较大。
+通过`jQuery`实现一个计数器，首先要获取Button的DOM节点，在DOM节点上添加一个匿名事件处理函数，在事件处理函数中，选中需要被修改的span标签，修改其文本值。  
 
 **React实现**
 ``` jsx
@@ -60,7 +67,14 @@ class ClickCounter extends Component {
 export default ClickCounter
 ```  
 
-通过React实现一个计数器，不用关注如何获取DOM节点，如何更新DOM节点，而是专注于“界面应该显示成什么样子”，只用关注每次点击之后counter值应该变为多少，获取DOM更新DOM的过程React会帮我们完成。这样使用react进行开发的优势就体现出来了。
+通过React实现一个计数器，不用关注如何获取DOM节点，如何更新DOM节点，而是专注于“界面应该显示成什么样子”，只用关注每次点击之后counter值应该变为多少，获取DOM更新DOM的过程React会帮我们完成。  
+
+**jQuery和React对比**
+> 举个例子来说：  
+
+政府需要建一栋大楼，开发者是建筑设计师，设计好了图纸，`jQuery`和`React`是两个建筑工人。如果交给`jQuery`做的话，设计师得事无巨细的告诉他“如何去做”，首先要把一面墙拆掉重建，然后再墙上开一个窗户......。如果交给`React`做的话，设计师只需要告诉他“需要什么样的建筑”，就可以了，`React`会搞定一切。  
+
+使用`React`，开发者只需要关注需要什么样的结果，而无需关注怎样去做。
 
 ## 三、React的优点
 对react有了一个初步的认识，现在系统的总结一下使用React的优点。  
@@ -84,11 +98,11 @@ React因此引入了虚拟DOM机制。虚拟DOM是一个真实DOM的一个快速
 ### 函数式编程
 > 纯函数指的是相同的输入，永远得到相同的输出，而且没有任何可观察的副作用。   
 
-每一个React组件都可以看成是一个纯函数，只用关心数据的映射，函数的值仅取决于函数参数的值，不依赖其他状态。  
+每一个React组件都可以看成是一个纯函数，只用关心数据的映射，render中接收数据作为参数，不依赖其他状态。开发者只需关心如何去操作数据，而不用关注如何操作用户界面。只要数据发生改变，界面就会做出响应。  
 React组件中render函数会返回一个DOM结构，将每个组件返回的DOM结构组装起来就可以组成一个大型应用。
 
 ### JSX
-React中采用jsx语法，将Html代码直接写在Js中。JSX有一些基本的语法规则：  
+React中采用jsx语法，jsx可以将HTML、CSS都写在Js中。JSX有一些基本的语法规则：  
 
 #### 1、定义标签时，只允许被一个标签包裹
 ``` jsx
@@ -155,5 +169,21 @@ React.render(
 );
 ```
 
-## 四、总结 
-第0节课：《了解React》。通过一个实例简单的介绍一下React，了解React的优点和以往的开发模式的区别。  
+## 四、问题 
+### 为什么`React`在组件中没有用到还要引入？  
+在每个组件中都会引入`React`，如果删除了会报错，因为在使用JSX的代码文件中，JSX最终会被转译成依赖于`React`的表达式。  
+
+### JSX中的onClick和原生HTML中的onClick有什么区别？ 
+> 原生HTML中onClick函数有以下几个缺点  
+
+* onClick添加的事件处理函数是在全局环境下执行，污染了全局环境  
+* 给许多DOM元素添加事件，影响了网页的性能  
+* 对于使用onClick添加事件处理函数的DOM元素，如果要动态的删除，需要把对应的时间处理器注销。  
+
+> JSX中的事件处理函数的优点  
+
+JSX中的事件处理函数都使用了事件委托的方式进行处理，无论页面中有多少个onClick函数，最后都只在DOM树上添加了一个事件处理函数，挂载最顶层的DOM节点，点击事件发生时，根据具体组件分配给特定的函数进行处理。
+
+
+## 五、总结 
+第0节课：《了解React》。通过一个实例简单的介绍一下React，了解React的优点和以往的开发模式的区别。

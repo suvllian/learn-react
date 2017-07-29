@@ -14,7 +14,7 @@
 如果两个组件逻辑联系太紧密，这两个组件就不应该被拆开，应该是一个独立的组件。否则两个组件就需要频繁的进行数据交互，得不偿失。
 
 ## 二、React组件的数据 
-**props和state**  
+**`props和state`**  
 
 React组件的数据来源分为props和state，props是组件对外的接口，是父组件传过来的数据，state是组件内部的数据。props和state改变都有可能导致组件重新渲染。  
 
@@ -23,7 +23,7 @@ props是从外部传递给组件的数据，每个组件都是独立存在的模
 
 父组件可以通过props传递任何一种Javascript支持的数据类型到子组件，函数也可以，当props的类型不是字符串时，在JSX中必须用花括号将props值包住，props是一个对象，传递的数据是props的属性，在子组件中可以通过访问props对象属性获取传递的数据。  
 
-**父组件**  
+**`父组件`**  
 
 ``` jsx 
 import React, { Component } from 'react' 
@@ -42,7 +42,7 @@ class App extends Component {
 }
 ```  
 
-**子组件**
+**`子组件`**
 
 ``` jsx
 constructor(props) {
@@ -58,7 +58,7 @@ constructor(props) {
 
 构造函数中还给一个成员函数绑定了当前的this执行环境，因为ES6方法创造的组件类并不会自动绑定this到当前实例类。如果没有手动绑定函数到当前this环境，函数体中如果想通过this获取当前组件实例就会失败。  
 
-**propTypes检查**  
+**`propTypes检查`**  
 
 props是组件对外的接口，可以通过propTypes声明组件的规范： 
 * 组件支持哪些props   
@@ -82,7 +82,7 @@ ClickCounter.propTypes = {
 ### state
 state代表组件内部的状态。
 
-**初始化state**  
+**`初始化state`**  
 
 在构造函数中，对state进行赋值可以完成state的初始化，state是一个对象。
 
@@ -107,7 +107,7 @@ this.state = {
 }
 ```
 
-**读取和更新state**  
+**`读取和更新state`**  
 
 在组件内的任何位置都可以通过this.state来访问state对象，改变state的值必须使用`this.setState()`方法，不能直接去修改state，直接修改state，只是修改了state中的值，没有驱动组件重新渲染，所以在View层看不出来state的变化。 
 
@@ -118,47 +118,50 @@ this.setState({count: this.state.count + 1})
 ### props和state对比 
 
 * props用于定义组件外部接口，state用于记录组件内部状态
-* 
+ 
 * props的赋值在组件外部，组件内部不能修改props，state的赋值在组件内部。
 
 ## 三、组件的生命周期  
+
 React组件的生命周期可能会经过下面三个过程：
 
 * 装载过程：组件第一次在DOM树中渲染的过程。
-* 
+ 
 * 更新过程：组件被重新渲染的过程。
-* 
+ 
 * 卸载过程：组件从DOM中删除的过程。
 
 ### 装载过程
 
-* constructor
+```  
+constructor
 
-* getInitState
+getInitState
 
-* getDefaultProps
+getDefaultProps
 
-* componentWillMount
+componentWillMount
 
-* render
+render
 
-* componentDidMount
+componentDidMount  
+```
 
-**constructor** 
+**`constructor`** 
 
 1、初始化state  
 
 2、绑定成员函数的this指向
 
-**getInitState和getDefaultProps**  
+**`getInitState和getDefaultProps`**  
 
 用于初始化state和props，不过这两个方法只有在用React.createClass方法创建组件时才会有作用，使用ES6语法创建组件时，这两个方法无效。使用ES6语法创建组件时，可以用第二部分的方法初始化state和props。  
 
-**render**  
+**`render`**  
 
 render是一个纯函数，返回组件要渲染的内容。
 
-**componentWillMount和componentDidMount**  
+**`componentWillMount和componentDidMount`**  
 
 componentWillMount方法会在组件渲染前被调用，componentDidMount方法在render方法后被调用，此时render函数返回的内容已经渲染到DOM结构上，这时候就可以进行操作DOM了。 
 
@@ -166,29 +169,31 @@ componentWillMount方法会在组件渲染前被调用，componentDidMount方法
 
 当组件的props和state被修改时，就会引发组件的更新。
 
-* componentWillReceiveProps
+```  
+componentWillReceiveProps
 
-* shouldComponentUpdate
+shouldComponentUpdate
 
-* componentWillUpdate
+componentWillUpdate
 
-* render
+render
 
-* componentDidUpdate  
+componentDidUpdate  
+```
 
-**componentWillReceiveProps**  
+**`componentWillReceiveProps`** 
 
 只要父组件的render函数被调用，在render中被渲染的子组件按就回经历更新过程，不管父组件传递给子组件的props有没有改变，都会触发componentWillReceiveProps函数。
 
 在componentWillReceiveProps函数中可以将传入的参数nextProps和this.props进行对比，只在两者有变化时，才更新内部的state。
 
-**shouldComponentUpdate**  
+**`shouldComponentUpdate`**  
 
 shouldComponentUpdate函数决定了组件在什么时候不需要渲染，shouldComponentUpdate返回一个布尔值，告诉React当前组件这次更新过程是否需要继续。如果返回false，立即停止更新过程，不会引发后续的渲染。
 
 shouldComponentUpdate的参数是新的state和props，可以将新的state、props和之前的state、props进行比较，如果发生变化则更新，没有发生变化则不更新。这样可以大大提高应用的性能。
 
-**componentWillUpdate和componentDidUpdate**  
+**`componentWillUpdate和componentDidUpdate`**  
 类似于componentWillMount和componentDidMount，是在依次更新过程中的render函数的前后调用。
 
 ### 卸载过程  

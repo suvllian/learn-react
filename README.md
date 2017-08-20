@@ -13,6 +13,6 @@
 
 * Lesson 1：[《设计一个React组件》](./lesson1)
 
-* Lesson 2：
+* Lesson 2：[《实现一个简单的虚拟DOM》](./lesson2)
 ---
 如果你觉得对你有帮助，请start本项目，也是对我的一种鼓励，蟹蟹。

@@ -9,7 +9,9 @@
 
 * Lesson 1：[《设计一个React组件》](./lesson1)
 
-* Lesson 2：[《实现一个简单的虚拟DOM》](./lesson2)
+* Lesson 2：[《实现一个简单的虚拟DOM》](./lesson2)  
+
+* Lesson 3：[《React组件的性能优化》](./lesson3)
 
 
 
